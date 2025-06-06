@@ -81,14 +81,26 @@ $this->layout('views/layouts/base', [
                             Não encontrou o que procura? Entre em contato conosco para receber ajuda personalizada.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="/" class="btn btn-primary group">
-                                <span class="iconify mr-2 group-hover:translate-x-1 transition-transform" data-icon="mdi:home-outline"></span>
-                                Voltar para a página inicial
-                            </a>
-                            <a href="/contato" class="btn btn-secondary group">
-                                <span class="iconify mr-2 group-hover:translate-x-1 transition-transform" data-icon="mdi:email-outline"></span>
-                                Fale conosco
-                            </a>
+                            <?php 
+                            $text = 'Voltar para a página inicial';
+                            $href = '/';
+                            $variant = 'primary';
+                            $attributes = [
+                                'class' => 'group',
+                                'data-icon' => 'mdi:home-outline'
+                            ];
+                            include 'src/components/common/button.php'; 
+                            ?>
+                            <?php 
+                            $text = 'Fale conosco';
+                            $href = '/contato';
+                            $variant = 'secondary';
+                            $attributes = [
+                                'class' => 'group',
+                                'data-icon' => 'mdi:email-outline'
+                            ];
+                            include 'src/components/common/button.php'; 
+                            ?>
                         </div>
                     </div>
                 </div>
