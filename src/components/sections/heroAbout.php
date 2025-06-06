@@ -137,13 +137,13 @@
     animation: fade-in 0.8s ease-out forwards;
 }
 
-/* Parallax Effect */
+
 .parallax {
     transform: translateY(var(--parallax-offset, 0));
     transition: transform 0.1s linear;
 }
 
-/* Responsive Typography */
+
 @media (max-width: 768px) {
     .text-6xl {
         font-size: 2.5rem;

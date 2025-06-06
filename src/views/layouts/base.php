@@ -65,7 +65,7 @@
 <body>
     <?= $this->insert('components/sections/header') ?>
 
-    <main class="min-h-[30vh]">
+    <main class="min-h-[30vh] mt-[80px]">
         <?= $this->section('main_content') ?>
     </main>
 
