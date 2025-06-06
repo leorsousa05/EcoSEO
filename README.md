@@ -1,6 +1,6 @@
 # EcoSEO
 
-Um template moderno e otimizado para criação de websites com foco em SEO, construído com PHP e Tailwind CSS v4.
+Um template moderno e otimizado para criação de websites com foco em SEO, construído com PHP e Tailwind CSS.
 
 ## 🚀 Características
 
@@ -12,7 +12,7 @@ Um template moderno e otimizado para criação de websites com foco em SEO, cons
   - Server-Side Rendering
 
 - **Design Moderno**
-  - Tailwind CSS v4
+  - Tailwind CSS
   - Sistema de temas personalizável
   - Componentes reutilizáveis
   - Design responsivo
@@ -30,7 +30,7 @@ Um template moderno e otimizado para criação de websites com foco em SEO, cons
 ## 🛠️ Tecnologias
 
 - PHP
-- Tailwind CSS v4
+- Tailwind CSS
 - Vite
 - Composer
 
@@ -38,8 +38,8 @@ Um template moderno e otimizado para criação de websites com foco em SEO, cons
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/leorsousa05/seo-best-template.git
-cd seo-best-template
+git clone https://github.com/leorsousa05/ecoseo.git
+cd ecoseo
 ```
 
 2. Instale as dependências:
@@ -56,19 +56,23 @@ npm run dev
 ## 🏗️ Estrutura do Projeto
 
 ```
-EcoSEO/
+ecoseo/
 ├── src/
+│   ├── Core/
+│   │   └── ApiClient.php
 │   ├── assets/
 │   │   ├── css/
 │   │   └── js/
 │   ├── components/
 │   │   ├── common/
 │   │   └── sections/
-│   ├── core/
 │   ├── config/
 │   └── views/
 │       └── layouts/
 ├── public/
+├── package.json
+├── composer.json
+└── README.md
 ```
 
 ## 🎨 Personalização
