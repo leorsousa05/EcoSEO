@@ -3,7 +3,6 @@ import "@iconify/iconify";
 import Glide from '@glidejs/glide';
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Glide carousel
     if (document.querySelector('.glide')) {
         new Glide('.glide', {
             type: 'carousel',
@@ -31,13 +30,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const isOpen = mobileMenu.style.display === 'block';
             mobileMenu.style.display = isOpen ? 'none' : 'block';
             
-            // Toggle icons
             menuIcons.forEach((icon, index) => {
                 icon.style.display = (index === 0 && !isOpen) || (index === 1 && isOpen) ? 'none' : 'block';
             });
         });
         
-        // Close menu when clicking outside
         document.addEventListener('click', function(event) {
             if (!menuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
                 mobileMenu.style.display = 'none';
@@ -46,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Close menu when clicking on menu links
         const menuLinks = mobileMenu.querySelectorAll('a');
         menuLinks.forEach(link => {
             link.addEventListener('click', function() {
