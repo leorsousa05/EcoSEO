@@ -55,11 +55,23 @@
 		</script>
     <?php endif; ?>
 
-    <?php if (file_exists(__DIR__ . '/../../public/assets/style.css')): ?>
+    <?php
+    $assetsDir = 'public/assets';
+    $buildJsFiles = glob($assetsDir . '/main-*.js');
+    $isDev = empty($buildJsFiles);
+    ?>
+
+    <?php if ($isDev): ?>
         <link rel="stylesheet" href="/assets/style.css">
-    <?php else: ?>
         <script type="module" src="http://localhost:5173/@vite/client"></script>
         <script type="module" src="http://localhost:5173/assets/js/main.js"></script>
+    <?php else: ?>
+        <?php foreach (glob($assetsDir . '/main-*.css') as $css): ?>
+            <link rel="stylesheet" href="<?= $assetsDir ?>/<?= basename($css) ?>">
+        <?php endforeach; ?>
+        <?php foreach (glob($assetsDir . '/main-*.js') as $js): ?>
+            <script type="module" src="<?= $assetsDir ?>/<?= basename($js) ?>"></script>
+        <?php endforeach; ?>
     <?php endif; ?>
 </head>
 <body>
