@@ -95,4 +95,4 @@ Contribuições são bem-vindas! Por favor, leia o [CONTRIBUTING.md](CONTRIBUTIN
 
 ## 📧 Contato
 
-Para sugestões, dúvidas ou feedback, abra uma issue no GitHub ou entre em contato através do email: seu-email@exemplo.com 
+Para sugestões, dúvidas ou feedback, abra uma issue no GitHub ou entre em contato através do email: contato.leonardo.ribeiro.sousa@gmail.com
