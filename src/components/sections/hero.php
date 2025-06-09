@@ -88,9 +88,9 @@ foreach ($attributes as $key => $value) {
                         <?php foreach ($buttons as $button): ?>
                             <?= $this->insert('components/common/button', [
                                 'text' => $button['text'],
-                                'icon' => $button['icon'],
+                                'icon' => $button['icon'] ?? null,
                                 'href' => $button['href'],
-                                'style' => $button['style'],
+                                'style' => $button['style'] ?? null,
                                 'size' => 'lg',
                                 'customClass' => 'group'
                             ]) ?>
