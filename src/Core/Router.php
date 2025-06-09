@@ -18,14 +18,15 @@ class Router {
         
         $this->templates->addData(['year' => date('Y')]);
         
-        $this->dispatcher = simpleDispatcher(function(RouteCollector $r) {
-            $r->addRoute('GET', '/', 'views/home');
-            $r->addRoute('GET', '/mapa-site', 'views/sitemap');
-            $r->addRoute('GET', '/sobre', 'views/about');
-            $r->addRoute(['GET', 'POST'], '/contato', 'views/contact');
-            $r->addRoute('GET', '/sitemap.xml', 'sitemap');
-            $r->addRoute('GET', '/robots.txt', 'robots');
-            $r->addRoute('GET', '/{slug}', 'views/dynamic');
+        $baseUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $baseUrl = rtrim(dirname($baseUrl), '/\\');
+        $this->dispatcher = simpleDispatcher(function(RouteCollector $r) use ($baseUrl) {
+            $r->addRoute('GET', $baseUrl . '/', 'views/home');
+            $r->addRoute('GET', $baseUrl . '/mapa-site', 'views/sitemap');
+            $r->addRoute('GET', $baseUrl . '/sitemap.xml', 'sitemap');
+            $r->addRoute('GET', $baseUrl . '/robots.txt', 'robots');
+            $r->addRoute(['GET', 'POST'], $baseUrl . '/contato', 'views/contact');
+            $r->addRoute('GET', $baseUrl . '/{slug}', 'views/dynamic');
         });
     }
 
