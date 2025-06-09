@@ -12,7 +12,7 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main: 'assets/js/main.js'
+        main: 'src/assets/js/main.js'
       }
     }
   },
