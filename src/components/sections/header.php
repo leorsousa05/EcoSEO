@@ -18,7 +18,17 @@ $menuItems = $menuItems ?? [
     [
         'text' => 'Serviços',
         'href' => '/servicos',
-        'active' => $_SERVER['REQUEST_URI'] === '/servicos'
+        'active' => $_SERVER['REQUEST_URI'] === '/servicos',
+        'submenu' => [
+            [
+                'text' => 'SEO Técnico',
+                'href' => '/servicos/seo-tecnico'
+            ],
+            [
+                'text' => 'Consultoria',
+                'href' => '/servicos/consultoria'
+            ]
+        ]
     ],
     [
         'text' => 'Blog',
@@ -41,6 +51,15 @@ foreach ($attributes as $key => $value) {
 }
 ?>
 
+<style>
+.submenu-hover:hover .submenu-dropdown,
+.submenu-hover .submenu-dropdown:hover {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+</style>
+
 <header class="h-[80px] fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200"<?= $attrs ?>>
     <div class="container mx-auto px-4">
         <div class="flex justify-between items-center py-4">
@@ -55,14 +74,32 @@ foreach ($attributes as $key => $value) {
 
             <nav class="hidden lg:flex items-center space-x-8">
                 <?php foreach ($menuItems as $item): ?>
-                    <a href="<?= htmlspecialchars($item['href']) ?>" 
-                       class="relative text-gray-600 hover:text-gray-900 transition-colors duration-200 py-2 group">
-                        <?= htmlspecialchars($item['text']) ?>
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-                        <?php if ($item['active']): ?>
-                            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span>
+                    <div class="relative group submenu-hover">
+                        <a href="<?= htmlspecialchars($item['href']) ?>" 
+                           class="relative text-gray-600 hover:text-gray-900 transition-colors duration-200 py-2 flex items-center group">
+                            <?= htmlspecialchars($item['text']) ?>
+                            <?php if (!empty($item['submenu'])): ?>
+                                <span class="iconify ml-1 w-4 h-4 text-gray-500 group-hover:text-gray-900 transition-transform duration-300 transform group-hover:rotate-180" data-icon="heroicons:chevron-down"></span>
+                            <?php endif; ?>
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                            <?php if ($item['active'] ?? false): ?>
+                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span>
+                            <?php endif; ?>
+                        </a>
+                        
+                        <?php if (!empty($item['submenu'])): ?>
+                            <!-- Área invisível para manter o hover -->
+                            <div class="absolute top-full left-0 w-full h-2 bg-transparent"></div>
+                            <div class="submenu-dropdown absolute opacity-0 invisible transition-all duration-200 top-full left-0 min-w-[200px] bg-white shadow-lg rounded-md mt-2 py-2 z-50 border border-gray-100">
+                                <?php foreach ($item['submenu'] as $subitem): ?>
+                                    <a href="<?= htmlspecialchars($subitem['href']) ?>" 
+                                       class="block px-4 py-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 flex items-center transition-colors duration-150">
+                                        <?= htmlspecialchars($subitem['text']) ?>
+                                    </a>
+                                <?php endforeach; ?>
+                            </div>
                         <?php endif; ?>
-                    </a>
+                    </div>
                 <?php endforeach; ?>
             </nav>
 
@@ -91,11 +128,36 @@ foreach ($attributes as $key => $value) {
         <div class="lg:hidden" x-show="open" x-transition>
             <nav class="py-4 space-y-4">
                 <?php foreach ($menuItems as $item): ?>
-                    <a href="<?= htmlspecialchars($item['href']) ?>" 
-                       class="block text-gray-600 hover:text-gray-900 transition-colors duration-200 py-2">
-                        <?= htmlspecialchars($item['text']) ?>
-                    </a>
+                    <div x-data="{ submenuOpen: false }">
+                        <div class="flex items-center justify-between">
+                            <a href="<?= htmlspecialchars($item['href']) ?>" 
+                               class="block text-gray-600 hover:text-gray-900 transition-colors duration-200 py-2">
+                                <?= htmlspecialchars($item['text']) ?>
+                            </a>
+                            
+                            <?php if (!empty($item['submenu'])): ?>
+                                <button @click="submenuOpen = !submenuOpen" 
+                                        class="text-gray-600 hover:text-gray-900 transition-transform duration-300"
+                                        :class="{ 'rotate-180': submenuOpen }">
+                                    <span class="iconify w-5 h-5" data-icon="heroicons:chevron-down"></span>
+                                </button>
+                            <?php endif; ?>
+                        </div>
+                        
+                        <?php if (!empty($item['submenu'])): ?>
+                            <div x-show="submenuOpen" x-transition 
+                                 class="pl-4 space-y-2 mt-2">
+                                <?php foreach ($item['submenu'] as $subitem): ?>
+                                    <a href="<?= htmlspecialchars($subitem['href']) ?>" 
+                                       class="block text-gray-500 hover:text-gray-800 transition-colors duration-200">
+                                        <?= htmlspecialchars($subitem['text']) ?>
+                                    </a>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
                 <?php endforeach; ?>
+                
                 <div class="pt-4">
                     <?= $this->insert('components/common/button', [
                         'text' => $ctaButton['text'],
@@ -110,3 +172,6 @@ foreach ($attributes as $key => $value) {
         </div>
     </div>
 </header>
+
+<?php // Include the privacy popup component ?>
+<?= $this->insert('components/common/privacy-popup') ?>

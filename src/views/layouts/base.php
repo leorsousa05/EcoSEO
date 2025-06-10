@@ -84,6 +84,8 @@
     <?= $this->insert('components/sections/footer') ?>
 
     <?= $this->insert('components/common/whatsapp-float') ?>
+    <?= $this->insert('components/common/privacy-popup') ?>
+
 
     <?php if ($siteConfig['gtm']): ?>
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?= $siteConfig['gtm'] ?>"
