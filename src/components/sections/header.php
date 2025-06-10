@@ -88,7 +88,6 @@ foreach ($attributes as $key => $value) {
                         </a>
                         
                         <?php if (!empty($item['submenu'])): ?>
-                            <!-- Área invisível para manter o hover -->
                             <div class="absolute top-full left-0 w-full h-2 bg-transparent"></div>
                             <div class="submenu-dropdown absolute opacity-0 invisible transition-all duration-200 top-full left-0 min-w-[200px] bg-white shadow-lg rounded-md mt-2 py-2 z-50 border border-gray-100">
                                 <?php foreach ($item['submenu'] as $subitem): ?>
@@ -124,7 +123,6 @@ foreach ($attributes as $key => $value) {
             </div>
         </div>
 
-        <!-- Mobile Menu -->
         <div class="lg:hidden" x-show="open" x-transition>
             <nav class="py-4 space-y-4">
                 <?php foreach ($menuItems as $item): ?>
@@ -173,5 +171,4 @@ foreach ($attributes as $key => $value) {
     </div>
 </header>
 
-<?php // Include the privacy popup component ?>
 <?= $this->insert('components/common/privacy-popup') ?>
