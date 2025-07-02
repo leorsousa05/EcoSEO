@@ -1,4 +1,4 @@
-<?php $siteConfig = require __DIR__ . '/../../config/site.php'; ?>
+<?php $siteConfig = require __DIR__ . '/../config/site.php'; ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>

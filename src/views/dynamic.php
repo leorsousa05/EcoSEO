@@ -11,7 +11,7 @@ if (!$pageData || empty($pageData['content'])) {
     exit;
 }
 
-$this->layout('views/layouts/base', [
+$this->layout('layouts/base', [
     'title' => $pageData['title'] . ' - SEO Template',
     'description' => $pageData['description'],
     'keywords' => $pageData['keywords'] ?? 'seo, template, página dinâmica',

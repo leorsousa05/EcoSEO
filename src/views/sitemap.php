@@ -6,7 +6,7 @@ $pages = $api->getAllPages();
 
 $siteConfig = require __DIR__ . '/../config/site.php';
 
-$this->layout('views/layouts/base', [
+$this->layout('layouts/base', [
     'title' => 'Mapa do Site - ' . $siteConfig['name'],
     'description' => 'Lista completa de todas as páginas disponíveis em nosso site',
     'keywords' => 'sitemap, mapa do site, páginas, navegação'

@@ -1,5 +1,5 @@
 <?php
-$this->layout('views/layouts/base', [
+$this->layout('layouts/base', [
     'title' => 'Página não encontrada - 404',
     'description' => 'A página que você está procurando não foi encontrada.'
 ]);
