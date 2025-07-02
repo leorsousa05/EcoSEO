@@ -75,6 +75,42 @@ $this->layout('layouts/base', [
                             </ul>
                         </div>
                     </div>
+
+                    <!-- Páginas Populares -->
+                    <div class="bg-white/5 rounded-xl p-6 mb-8">
+                        <div class="text-center mb-6">
+                            <div class="flex items-center justify-center gap-3 mb-4">
+                                <span class="iconify text-2xl text-primary" data-icon="mdi:star-outline"></span>
+                                <h3 class="text-xl font-semibold text-white">Páginas Populares</h3>
+                            </div>
+                            <p class="text-gray-300">
+                                Que tal explorar algumas das nossas páginas mais visitadas?
+                            </p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <?php
+                            $popularPages = [
+                                ['text' => 'Início', 'href' => '/', 'icon' => 'mdi:home', 'color' => 'primary'],
+                                ['text' => 'Sobre', 'href' => '/sobre', 'icon' => 'mdi:information', 'color' => 'info'],
+                                ['text' => 'Serviços', 'href' => '/servicos', 'icon' => 'mdi:cog', 'color' => 'success'],
+                                ['text' => 'Contato', 'href' => '/contato', 'icon' => 'mdi:email', 'color' => 'secondary'],
+                            ];
+                            
+                            foreach ($popularPages as $page): ?>
+                                <a href="<?= $page['href'] ?>" 
+                                   class="group bg-white/5 hover:bg-white/10 rounded-lg p-4 transition-all duration-300 transform hover:scale-105 border border-white/10 hover:border-primary/50">
+                                    <div class="flex items-center gap-3">
+                                        <span class="iconify text-xl text-primary group-hover:scale-110 transition-transform duration-300" 
+                                              data-icon="<?= $page['icon'] ?>"></span>
+                                        <span class="text-white font-medium group-hover:text-primary transition-colors duration-300">
+                                            <?= $page['text'] ?>
+                                        </span>
+                                    </div>
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
     
                     <div class="text-center space-y-4">
                         <p class="text-gray-300 mb-6">
@@ -106,28 +142,4 @@ $this->layout('layouts/base', [
                 </div>
             </div>
         </div>
-    </div>
-
-    <style>
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-fade-in {
-            animation: fade-in 0.6s ease-out forwards;
-        }
-
-        .btn {
-            @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105;
-        }
-
-        .btn-primary {
-            @apply bg-primary text-white hover:bg-primary-dark;
-        }
-
-        .btn-secondary {
-            @apply bg-white/10 text-white hover:bg-white/20;
-        }
-    </style>
 <?php $this->stop() ?> 

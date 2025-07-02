@@ -25,6 +25,7 @@ class Router {
             $r->addRoute('GET', $baseUrl . '/mapa-site', 'views/sitemap');
             $r->addRoute('GET', $baseUrl . '/sitemap.xml', 'sitemap');
             $r->addRoute('GET', $baseUrl . '/robots.txt', 'robots');
+            $r->addRoute('GET', $baseUrl . '/404', 'views/404');
             $r->addRoute(['GET', 'POST'], $baseUrl . '/contato', 'views/contact');
             $r->addRoute('GET', $baseUrl . '/{slug}', 'views/dynamic');
         });
@@ -37,7 +38,7 @@ class Router {
     private function generateSitemap(): string {
         $baseUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
         
-        // Rotas estáticas
+        
         $staticRoutes = [
             '/' => [
                 'url' => $baseUrl . '/',
@@ -65,7 +66,7 @@ class Router {
             ]
         ];
 
-        // Páginas dinâmicas da API
+        
         $dynamicRoutes = [];
         $pages = $this->apiClient->getAllPages();
         
@@ -83,10 +84,10 @@ class Router {
             }
         }
 
-        // Combinar todas as rotas
+        
         $allRoutes = array_merge($staticRoutes, $dynamicRoutes);
 
-        // Gerar XML
+        
         $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
         $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
         
@@ -110,7 +111,7 @@ class Router {
         
         $content = "User-agent: *\n";
         $content .= "Allow: /\n";
-        $content .= "Disallow: /admin/\n";  // Exemplo de disallow, ajuste conforme necessário
+        $content .= "Disallow: /admin/\n";  
         $content .= "Sitemap: " . $sitemapUrl . "\n";
         
         return $content;
@@ -135,7 +136,7 @@ class Router {
                 $view = $routeInfo[1];
                 $vars = $routeInfo[2];
                 
-                // Handle sitemap specially
+                
                 if ($view === 'sitemap') {
                     header('Content-Type: application/xml; charset=utf-8');
                     echo $this->generateSitemap();

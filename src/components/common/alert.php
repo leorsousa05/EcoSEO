@@ -34,17 +34,17 @@ $classes = 'fixed bottom-4 right-4 z-50 p-4 rounded-lg border-l-4 shadow-lg opac
         const alertId = 'alert-<?php echo uniqid(); ?>';
         const alertElement = document.getElementById(alertId);
         if (alertElement) {
-            alertElement.style.display = 'block';  // Show the alert
+            alertElement.style.display = 'block';  
             setTimeout(() => {
                 alertElement.classList.remove('opacity-0');
                 alertElement.classList.add('opacity-100');
-            }, 100);  // Fade in
+            }, 100);  
             setTimeout(() => {
                 alertElement.classList.remove('opacity-100');
                 alertElement.classList.add('opacity-0');
                 setTimeout(() => {
                     alertElement.style.display = 'none';
-                }, 300);  // Auto-hide after 5 seconds
+                }, 300);  
             }, 5000);
         }
     });
