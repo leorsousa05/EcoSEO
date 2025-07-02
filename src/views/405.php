@@ -1,7 +1,7 @@
 <?php
 $this->layout('layouts/base', [
     'title' => 'Método não permitido - 405',
-    'description' => 'O método de requisição não é permitido para esta página.'
+    'description' => 'O método de requisição não é permitido para esta página.',
 ]);
 ?>
 

@@ -24,9 +24,9 @@ class ApiClient implements ApiClientInterface
         $this->baseUrl = rtrim($baseUrl, '/');
         $this->apiToken = $apiToken;
         $this->defaultHeaders = [
-            'Authorization: Bearer ' . $this->apiToken
+            'Authorization: Bearer ' . $this->apiToken,
         ];
-        
+
         $this->routes = array_merge([
             'pages' => 'client/pages',
             'page' => 'client/page',
@@ -51,7 +51,7 @@ class ApiClient implements ApiClientInterface
             CURLOPT_SSL_VERIFYHOST => 0,
         ];
 
-        if (!empty($data)) {
+        if (! empty($data)) {
             $options[CURLOPT_POSTFIELDS] = json_encode($data);
             $options[CURLOPT_HTTPHEADER][] = 'Content-Type: application/json';
         }
@@ -73,7 +73,7 @@ class ApiClient implements ApiClientInterface
         }
 
         $decoded = json_decode($response);
-        
+
         if (json_last_error() !== JSON_ERROR_NONE) {
             throw new \Exception("JSON Decode Error: " . json_last_error_msg());
         }
@@ -85,9 +85,11 @@ class ApiClient implements ApiClientInterface
     {
         try {
             $response = $this->makeRequest($this->routes['pages']);
+
             return is_array($response) ? $response : null;
         } catch (\Exception $e) {
             error_log($e->getMessage());
+
             return null;
         }
     }
@@ -96,9 +98,11 @@ class ApiClient implements ApiClientInterface
     {
         try {
             $response = $this->makeRequest($this->routes['page'] . '/' . urlencode($url));
+
             return is_object($response) ? $response : null;
         } catch (\Exception $e) {
             error_log($e->getMessage());
+
             return null;
         }
     }
@@ -106,8 +110,8 @@ class ApiClient implements ApiClientInterface
     public function getPageMetadata(string $url): ?array
     {
         $page = $this->getPageByUrl($url);
-        
-        if (!$page) {
+
+        if (! $page) {
             return null;
         }
 
@@ -117,7 +121,7 @@ class ApiClient implements ApiClientInterface
             'h1' => $page->name ?? '',
             'content' => $page->content ?? '',
             'cover' => $page->cover ?? '',
-            'gallery' => $page->galleryItem ?? []
+            'gallery' => $page->galleryItem ?? [],
         ];
     }
 
@@ -125,4 +129,4 @@ class ApiClient implements ApiClientInterface
     {
         $this->routes = array_merge($this->routes, $routes);
     }
-} 
+}

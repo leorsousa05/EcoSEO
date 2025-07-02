@@ -157,7 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             'text' => 'Enviar Mensagem',
                             'type' => 'submit',
                             'variant' => 'primary',
-                            'icon' => 'mdi:send'
+                            'icon' => 'mdi:send',
                         ]) ?>
                     </div>
                 </form>

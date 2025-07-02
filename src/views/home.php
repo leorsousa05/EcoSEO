@@ -4,7 +4,7 @@ $siteConfig = require __DIR__ . '/../config/site.php';
 $this->layout('/layouts/base', [
     'title' => 'Página Inicial - ' . $siteConfig['name'],
     'description' => $siteConfig['tagline'],
-    'keywords' => $siteConfig['seo']['keywords']
+    'keywords' => $siteConfig['seo']['keywords'],
 ]);
 ?>
 
@@ -17,9 +17,9 @@ $this->layout('/layouts/base', [
             [
                 'text' => 'Saiba mais',
                 'href' => '#',
-                'variant' => 'primary'
-            ]
-        ]
+                'variant' => 'primary',
+            ],
+        ],
     ]) ?>
 
     <?= $this->insert('components/sections/about') ?>

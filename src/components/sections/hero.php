@@ -5,30 +5,30 @@ $description = $description ?? 'Um template moderno e otimizado para SEO, criado
 $features = $features ?? [
     [
         'icon' => 'heroicons:bolt',
-        'text' => 'Performance otimizada com Core Web Vitals'
+        'text' => 'Performance otimizada com Core Web Vitals',
     ],
     [
         'icon' => 'heroicons:device-phone-mobile',
-        'text' => 'Design responsivo para todos os dispositivos'
+        'text' => 'Design responsivo para todos os dispositivos',
     ],
     [
         'icon' => 'heroicons:shield-check',
-        'text' => 'WCAG 2.1 AA compliant'
-    ]
+        'text' => 'WCAG 2.1 AA compliant',
+    ],
 ];
 $buttons = $buttons ?? [
     [
         'text' => 'Começar Agora',
         'icon' => 'heroicons:arrow-right',
         'href' => '#features',
-        'style' => 'solid'
+        'style' => 'solid',
     ],
     [
         'text' => 'Ver Documentação',
         'icon' => 'heroicons:book-open',
         'href' => '#docs',
-        'style' => 'outline'
-    ]
+        'style' => 'outline',
+    ],
 ];
 $attributes = $attributes ?? [];
 $customClass = $customClass ?? '';
@@ -43,8 +43,8 @@ foreach ($attributes as $key => $value) {
     'type' => 'info',
     'message' => 'Este é um alerta de informação',
     'attributes' => [
-        'class' => 'mb-4'
-    ]
+        'class' => 'mb-4',
+    ],
 ]) ?>
 
 <section id="hero" class="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"<?= $attrs ?>>
@@ -61,7 +61,7 @@ foreach ($attributes as $key => $value) {
                         'text' => 'Versão 1.0.0 Disponível',
                         'color' => 'primary',
                         'size' => 'md',
-                        'icon' => 'heroicons:sparkles'
+                        'icon' => 'heroicons:sparkles',
                     ]) ?>
 
                     <div class="space-y-4">
@@ -94,7 +94,7 @@ foreach ($attributes as $key => $value) {
                                 'href' => $button['href'],
                                 'style' => $button['style'] ?? null,
                                 'size' => 'lg',
-                                'customClass' => 'group'
+                                'customClass' => 'group',
                             ]) ?>
                         <?php endforeach; ?>
                     </div>

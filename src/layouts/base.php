@@ -57,9 +57,9 @@
 
     <?php
     $assetsDir = 'public/assets';
-    $buildJsFiles = glob($assetsDir . '/main-*.js');
-    $isDev = empty($buildJsFiles);
-    ?>
+$buildJsFiles = glob($assetsDir . '/main-*.js');
+$isDev = empty($buildJsFiles);
+?>
 
     <?php if ($isDev): ?>
         <link rel="stylesheet" href="/assets/style.css">

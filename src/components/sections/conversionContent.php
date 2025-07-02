@@ -30,7 +30,7 @@ $slug = $this->e($slug ?? '');
 
             <div class="lg:col-span-3">
                 <div class="bg-white p-8 rounded-2xl shadow-lg">
-                    <?php if (!empty($pageData['gallery']) || !empty($pageData['cover'])): ?>
+                    <?php if (! empty($pageData['gallery']) || ! empty($pageData['cover'])): ?>
                         <div class="grid grid-cols-1 gap-6 mb-12">
                             <div class="relative group overflow-hidden rounded-xl">
                                 <img src="<?= $this->e($pageData['cover']) ?>" 
@@ -39,7 +39,7 @@ $slug = $this->e($slug ?? '');
                                      loading="lazy">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             </div>
-                            <?php if (!empty($pageData['gallery'])): ?>
+                            <?php if (! empty($pageData['gallery'])): ?>
                             <div class="grid grid-cols-2 gap-4">
                                 <?php foreach ($pageData['gallery'] as $image): ?>
                                     <div class="relative group overflow-hidden rounded-xl">

@@ -1,7 +1,7 @@
 <?php
 $this->layout('layouts/base', [
     'title' => 'Página não encontrada - 404',
-    'description' => 'A página que você está procurando não foi encontrada.'
+    'description' => 'A página que você está procurando não foi encontrada.',
 ]);
 ?>
 
@@ -96,8 +96,8 @@ $this->layout('layouts/base', [
                                 ['text' => 'Serviços', 'href' => '/servicos', 'icon' => 'mdi:cog', 'color' => 'success'],
                                 ['text' => 'Contato', 'href' => '/contato', 'icon' => 'mdi:email', 'color' => 'secondary'],
                             ];
-                            
-                            foreach ($popularPages as $page): ?>
+
+foreach ($popularPages as $page): ?>
                                 <a href="<?= $page['href'] ?>" 
                                    class="group bg-white/5 hover:bg-white/10 rounded-lg p-4 transition-all duration-300 transform hover:scale-105 border border-white/10 hover:border-primary/50">
                                     <div class="flex items-center gap-3">
@@ -117,26 +117,26 @@ $this->layout('layouts/base', [
                             Não encontrou o que procura? Entre em contato conosco para receber ajuda personalizada.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <?php 
-                            $text = 'Voltar para a página inicial';
-                            $href = '/';
-                            $variant = 'primary';
-                            $attributes = [
-                                'class' => 'group',
-                                'data-icon' => 'mdi:home-outline'
-                            ];
-                            include 'src/components/common/button.php'; 
-                            ?>
-                            <?php 
-                            $text = 'Fale conosco';
-                            $href = '/contato';
-                            $variant = 'secondary';
-                            $attributes = [
-                                'class' => 'group',
-                                'data-icon' => 'mdi:email-outline'
-                            ];
-                            include 'src/components/common/button.php'; 
-                            ?>
+                            <?php
+$text = 'Voltar para a página inicial';
+$href = '/';
+$variant = 'primary';
+$attributes = [
+    'class' => 'group',
+    'data-icon' => 'mdi:home-outline',
+];
+include 'src/components/common/button.php';
+?>
+                            <?php
+$text = 'Fale conosco';
+$href = '/contato';
+$variant = 'secondary';
+$attributes = [
+    'class' => 'group',
+    'data-icon' => 'mdi:email-outline',
+];
+include 'src/components/common/button.php';
+?>
                         </div>
                     </div>
                 </div>

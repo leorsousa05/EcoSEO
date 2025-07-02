@@ -6,7 +6,7 @@ $products = $products ?? [
         'description' => 'Descrição detalhada do produto premium com suas principais características e benefícios.',
         'image' => 'https://placehold.co/600x400/8b5cf6/ffffff?text=Produto+Premium',
         'features' => ['Recurso 1', 'Recurso 2', 'Recurso 3'],
-        'price' => 'R$ 999,00'
+        'price' => 'R$ 999,00',
     ],
     [
         'id' => 2,
@@ -14,7 +14,7 @@ $products = $products ?? [
         'description' => 'Descrição detalhada do produto standard com suas principais características e benefícios.',
         'image' => 'https://placehold.co/600x400/6b7280/ffffff?text=Produto+Standard',
         'features' => ['Recurso 1', 'Recurso 2', 'Recurso 3'],
-        'price' => 'R$ 699,00'
+        'price' => 'R$ 699,00',
     ],
     [
         'id' => 3,
@@ -22,8 +22,8 @@ $products = $products ?? [
         'description' => 'Descrição detalhada do produto básico com suas principais características e benefícios.',
         'image' => 'https://placehold.co/600x400/10b981/ffffff?text=Produto+Básico',
         'features' => ['Recurso 1', 'Recurso 2', 'Recurso 3'],
-        'price' => 'R$ 399,00'
-    ]
+        'price' => 'R$ 399,00',
+    ],
 ];
 ?>
 
@@ -74,7 +74,7 @@ $products = $products ?? [
                                         'text' => 'Saiba Mais',
                                         'href' => '#',
                                         'variant' => 'primary',
-                                        'icon' => 'mdi:arrow-right'
+                                        'icon' => 'mdi:arrow-right',
                                     ]) ?>
                                 </div>
                             </div>
@@ -100,13 +100,13 @@ $products = $products ?? [
                     'text' => 'Fale Conosco',
                     'href' => '/contato',
                     'variant' => 'primary',
-                    'icon' => 'mdi:email'
+                    'icon' => 'mdi:email',
                 ]) ?>
                 <?= $this->insert('components/common/button', [
                     'text' => 'Ver Todos',
                     'href' => '#',
                     'variant' => 'secondary',
-                    'icon' => 'mdi:arrow-right'
+                    'icon' => 'mdi:arrow-right',
                 ]) ?>
             </div>
         </div>

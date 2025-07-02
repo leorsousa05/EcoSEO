@@ -2,8 +2,8 @@
 
 namespace App\Core;
 
-use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 
 class Mailer
 {
@@ -17,19 +17,19 @@ class Mailer
 
         try {
             $this->mailer->isSMTP();
-            $this->mailer->Host       = $config['host'];
-            $this->mailer->SMTPAuth   = true;
-            $this->mailer->Username   = $config['username'];
-            $this->mailer->Password   = $config['password'];
+            $this->mailer->Host = $config['host'];
+            $this->mailer->SMTPAuth = true;
+            $this->mailer->Username = $config['username'];
+            $this->mailer->Password = $config['password'];
             $this->mailer->SMTPSecure = $config['encryption'];
-            $this->mailer->Port       = $config['port'];
+            $this->mailer->Port = $config['port'];
 
             $this->mailer->setFrom(
                 $config['from_email'],
                 $config['from_name']
             );
 
-            if (!empty($config['reply_to_email'] ?? null)) {
+            if (! empty($config['reply_to_email'] ?? null)) {
                 $this->mailer->addReplyTo(
                     $config['reply_to_email'],
                     $config['reply_to_name'] ?? ''
@@ -63,7 +63,7 @@ class Mailer
 
             $this->mailer->isHTML(true);
             $this->mailer->Subject = $subject;
-            $this->mailer->Body    = $body;
+            $this->mailer->Body = $body;
 
             if ($altBody !== null) {
                 $this->mailer->AltBody = $altBody;
@@ -73,7 +73,8 @@ class Mailer
 
         } catch (Exception $e) {
             error_log('Mail send error: ' . $e->getMessage());
+
             return false;
         }
     }
-} 
+}

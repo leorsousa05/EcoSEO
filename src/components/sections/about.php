@@ -9,8 +9,8 @@ $features = $features ?? [
         'list' => [
             'Lazy loading inteligente',
             'Otimização de imagens',
-            'Minificação automática'
-        ]
+            'Minificação automática',
+        ],
     ],
     [
         'icon' => 'heroicons:sparkles',
@@ -19,8 +19,8 @@ $features = $features ?? [
         'list' => [
             'Layout fluido',
             'Breakpoints customizados',
-            'Mobile-first approach'
-        ]
+            'Mobile-first approach',
+        ],
     ],
     [
         'icon' => 'heroicons:shield-check',
@@ -29,9 +29,9 @@ $features = $features ?? [
         'list' => [
             'ARIA landmarks',
             'Contraste adequado',
-            'Navegação por teclado'
-        ]
-    ]
+            'Navegação por teclado',
+        ],
+    ],
 ];
 $attributes = $attributes ?? [];
 $customClass = $customClass ?? '';
@@ -89,7 +89,7 @@ foreach ($attributes as $key => $value) {
                 'href' => '#features',
                 'style' => 'outline',
                 'size' => 'lg',
-                'customClass' => 'group'
+                'customClass' => 'group',
             ]) ?>
         </div>
     </div>

@@ -9,7 +9,7 @@ $siteConfig = require __DIR__ . '/../config/site.php';
 $this->layout('layouts/base', [
     'title' => 'Mapa do Site - ' . $siteConfig['name'],
     'description' => 'Lista completa de todas as páginas disponíveis em nosso site',
-    'keywords' => 'sitemap, mapa do site, páginas, navegação'
+    'keywords' => 'sitemap, mapa do site, páginas, navegação',
 ]);
 ?>
 
@@ -40,7 +40,7 @@ $this->layout('layouts/base', [
                                 <h2 class="text-xl font-semibold text-gray-900 group-hover:text-primary mb-3 transition-colors duration-300">
                                     <?= $page->name ?>
                                 </h2>
-                                <?php if (!empty($page->description)): ?>
+                                <?php if (! empty($page->description)): ?>
                                     <p class="text-gray-600 mb-4 leading-relaxed">
                                         <?= $page->description ?>
                                     </p>
@@ -65,7 +65,7 @@ $this->layout('layouts/base', [
                         'text' => 'Fale Conosco',
                         'href' => '/contato',
                         'variant' => 'primary',
-                        'icon' => 'mdi:email'
+                        'icon' => 'mdi:email',
                     ]) ?>
                 </div>
             </div>

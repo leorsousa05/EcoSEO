@@ -4,7 +4,7 @@ $siteConfig = require __DIR__ . '/../config/site.php';
 $this->layout('layouts/base', [
     'title' => 'Contato - ' . $siteConfig['name'],
     'description' => 'Entre em contato conosco',
-    'keywords' => 'contato, email'
+    'keywords' => 'contato, email',
 ]);
 ?>
 

@@ -10,15 +10,15 @@ $footerLinks = $footerLinks ?? [
             ['text' => 'Contato', 'href' => '/contato'],
             ['text' => 'Blog', 'href' => '/blog'],
             ['text' => 'Mapa do Site', 'href' => '/mapa-site'],
-        ]
+        ],
     ],
     [
         'title' => 'Legal',
         'links' => [
             ['text' => 'Termos de Uso', 'href' => '/termos'],
             ['text' => 'Privacidade', 'href' => '/privacidade'],
-        ]
-    ]
+        ],
+    ],
 ];
 $menuItems = $menuItems ?? [];
 $attributes = $attributes ?? [];

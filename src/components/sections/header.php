@@ -2,18 +2,18 @@
 $siteConfig = require __DIR__ . '/../../config/site.php';
 $logo = $logo ?? [
     'text' => 'Logo',
-    'href' => '/'
+    'href' => '/',
 ];
 $menuItems = $menuItems ?? [
     [
         'text' => 'Início',
         'href' => '/',
-        'active' => $_SERVER['REQUEST_URI'] === '/'
+        'active' => $_SERVER['REQUEST_URI'] === '/',
     ],
     [
         'text' => 'Sobre',
         'href' => '/sobre',
-        'active' => $_SERVER['REQUEST_URI'] === '/sobre'
+        'active' => $_SERVER['REQUEST_URI'] === '/sobre',
     ],
     [
         'text' => 'Serviços',
@@ -22,25 +22,25 @@ $menuItems = $menuItems ?? [
         'submenu' => [
             [
                 'text' => 'SEO Técnico',
-                'href' => '/servicos/seo-tecnico'
+                'href' => '/servicos/seo-tecnico',
             ],
             [
                 'text' => 'Consultoria',
-                'href' => '/servicos/consultoria'
-            ]
-        ]
+                'href' => '/servicos/consultoria',
+            ],
+        ],
     ],
     [
         'text' => 'Blog',
         'href' => '/blog',
-        'active' => $_SERVER['REQUEST_URI'] === '/blog'
-    ]
+        'active' => $_SERVER['REQUEST_URI'] === '/blog',
+    ],
 ];
 $ctaButton = $ctaButton ?? [
     'text' => 'Fale Conosco',
     'href' => '/contato',
     'style' => 'solid',
-    'size' => 'md'
+    'size' => 'md',
 ];
 $attributes = $attributes ?? [];
 $customClass = $customClass ?? '';
@@ -69,7 +69,7 @@ foreach ($attributes as $key => $value) {
                         <a href="<?= htmlspecialchars($item['href']) ?>" 
                            class="relative text-gray-600 hover:text-gray-900 transition-colors duration-200 py-2 flex items-center group">
                             <?= htmlspecialchars($item['text']) ?>
-                            <?php if (!empty($item['submenu'])): ?>
+                            <?php if (! empty($item['submenu'])): ?>
                                 <span class="iconify ml-1 w-4 h-4 text-gray-500 group-hover:text-gray-900 transition-transform duration-300 transform group-hover:rotate-180" data-icon="heroicons:chevron-down"></span>
                             <?php endif; ?>
                             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -78,7 +78,7 @@ foreach ($attributes as $key => $value) {
                             <?php endif; ?>
                         </a>
                         
-                        <?php if (!empty($item['submenu'])): ?>
+                        <?php if (! empty($item['submenu'])): ?>
                             <div class="absolute top-full left-0 w-full h-2 bg-transparent"></div>
                             <div class="submenu-dropdown absolute opacity-0 invisible transition-all duration-200 top-full left-0 min-w-[200px] bg-white shadow-lg rounded-md mt-2 py-2 z-50 border border-gray-100">
                                 <?php foreach ($item['submenu'] as $subitem): ?>
@@ -100,7 +100,7 @@ foreach ($attributes as $key => $value) {
                     'href' => $ctaButton['href'],
                     'style' => $ctaButton['style'],
                     'size' => $ctaButton['size'],
-                    'customClass' => 'group'
+                    'customClass' => 'group',
                 ]) ?>
             </div>
 
@@ -124,7 +124,7 @@ foreach ($attributes as $key => $value) {
                                 <?= htmlspecialchars($item['text']) ?>
                             </a>
                             
-                            <?php if (!empty($item['submenu'])): ?>
+                            <?php if (! empty($item['submenu'])): ?>
                                 <button @click="submenuOpen = !submenuOpen" 
                                         class="text-gray-600 hover:text-gray-900 transition-transform duration-300"
                                         :class="{ 'rotate-180': submenuOpen }">
@@ -133,7 +133,7 @@ foreach ($attributes as $key => $value) {
                             <?php endif; ?>
                         </div>
                         
-                        <?php if (!empty($item['submenu'])): ?>
+                        <?php if (! empty($item['submenu'])): ?>
                             <div x-show="submenuOpen" x-transition 
                                  class="pl-4 space-y-2 mt-2">
                                 <?php foreach ($item['submenu'] as $subitem): ?>
@@ -154,7 +154,7 @@ foreach ($attributes as $key => $value) {
                         'href' => $ctaButton['href'],
                         'style' => $ctaButton['style'],
                         'size' => $ctaButton['size'],
-                        'customClass' => 'w-full justify-center group'
+                        'customClass' => 'w-full justify-center group',
                     ]) ?>
                 </div>
             </nav>

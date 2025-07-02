@@ -14,7 +14,7 @@ $alertClasses = [
     'success' => 'bg-green-100 border-green-500 text-green-800',
     'error' => 'bg-red-100 border-red-500 text-red-800',
     'warning' => 'bg-yellow-100 border-yellow-500 text-yellow-800',
-    'info' => 'bg-blue-100 border-blue-500 text-blue-800'
+    'info' => 'bg-blue-100 border-blue-500 text-blue-800',
 ];
 
 $classes = 'fixed bottom-4 right-4 z-50 p-4 rounded-lg border-l-4 shadow-lg opacity-0 transition-opacity duration-300 ease-in ' . ($alertClasses[$type] ?? $alertClasses['info']) . ' text-[var(--color-secondary)]';
