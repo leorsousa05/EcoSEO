@@ -5,8 +5,6 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"npm run dev:php\" \"npm run dev:vite\" \"start http://localhost:8000\"",
-    "lint:php": "composer exec php-cs-fixer fix",
-    "format:php": "composer exec php-cs-fixer fix",
     "dev:vite": "vite",
     "dev:php": "php -S localhost:8000",
     "build": "vite build",
