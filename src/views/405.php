@@ -1,8 +1,6 @@
 <?php
-$this->layout('layouts/base', [
-    'title' => 'Método não permitido - 405',
-    'description' => 'O método de requisição não é permitido para esta página.',
-]);
+$pagesConfig = require __DIR__ . '/../config/pages.php';
+$this->layout('layouts/base', $pagesConfig['405']);
 ?>
 
 <?php $this->start('main_content') ?>

@@ -1,6 +1,7 @@
 <?php
 $year = date('Y');
 $siteConfig = require __DIR__ . '/../../config/site.php';
+$seoConfig = require __DIR__ . '/../../config/seo.php';
 $companyName = $companyName ?? $siteConfig['name'];
 $footerLinks = $footerLinks ?? [
     [
@@ -82,9 +83,9 @@ foreach ($attributes as $key => $value) {
                     <p class="text-gray-400 leading-relaxed flex items-start space-x-3">
                         <span class="iconify w-5 h-5 text-primary mt-1" data-icon="mdi:office-building"></span>
                         <span>
-                            <?= $siteConfig['address']['street'] ?><br>
-                            <?= $siteConfig['address']['city'] ?>, <?= $siteConfig['address']['state'] ?><br>
-                            CEP: <?= $siteConfig['address']['zip'] ?>
+                            <?= $seoConfig['address']['street'] ?><br>
+                            <?= $seoConfig['address']['city'] ?>, <?= $seoConfig['address']['state'] ?><br>
+                            CEP: <?= $seoConfig['address']['zip'] ?>
                         </span>
                     </p>
                     <a href="mailto:<?= $siteConfig['email']['primary'] ?>" 

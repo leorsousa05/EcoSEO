@@ -1,11 +1,6 @@
 <?php
-$siteConfig = require __DIR__ . '/../config/site.php';
-
-$this->layout('layouts/base', [
-    'title' => 'Contato - ' . $siteConfig['name'],
-    'description' => 'Entre em contato conosco',
-    'keywords' => 'contato, email',
-]);
+$pagesConfig = require __DIR__ . '/../config/pages.php';
+$this->layout('layouts/base', $pagesConfig['contact']);
 ?>
 
 <?php $this->start('main_content') ?>

@@ -1,8 +1,6 @@
 <?php
-$this->layout('layouts/base', [
-    'title' => 'Página não encontrada - 404',
-    'description' => 'A página que você está procurando não foi encontrada.',
-]);
+$pagesConfig = require __DIR__ . '/../config/pages.php';
+$this->layout('layouts/base', $pagesConfig['404']);
 ?>
 
 <?php $this->start('main_content') ?>

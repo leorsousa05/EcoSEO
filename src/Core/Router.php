@@ -30,6 +30,7 @@ class Router
             $r->addRoute('GET', $baseUrl . '/sitemap.xml', 'sitemap');
             $r->addRoute('GET', $baseUrl . '/robots.txt', 'robots');
             $r->addRoute('GET', $baseUrl . '/404', 'views/404');
+            $r->addRoute('GET', $baseUrl . '/agradecimentos', 'views/thankYou');
             $r->addRoute(['GET', 'POST'], $baseUrl . '/contato', 'views/contact');
             $r->addRoute('GET', $baseUrl . '/{slug}', 'views/dynamic');
         });

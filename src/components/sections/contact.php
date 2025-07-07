@@ -3,6 +3,7 @@ use App\Core\Mailer;
 
 $config = require __DIR__ . '/../../config/email.php';
 $siteConfig = require __DIR__ . '/../../config/site.php';
+$seoConfig = require __DIR__ . '/../../config/seo.php';
 
 $feedback = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -84,24 +85,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="flex-1">
                             <h4 class="text-lg font-semibold text-gray-900 mb-1">Localização</h4>
                             <p class="text-gray-600 leading-relaxed">
-                                <?= $siteConfig['address']['street'] ?><br>
-                                <?= $siteConfig['address']['city'] ?> - <?= $siteConfig['address']['state'] ?><br>
-                                CEP: <?= $siteConfig['address']['zip'] ?>
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-start space-x-5 group">
-                        <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-warning-light rounded-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:bg-warning">
-                                <span class="iconify w-6 h-6 text-warning group-hover:text-white" data-icon="mdi:clock"></span>
-                            </div>
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="text-lg font-semibold text-gray-900 mb-1">Horário de Funcionamento</h4>
-                            <p class="text-gray-600 leading-relaxed">
-                                <?= $siteConfig['business_hours']['weekdays'] ?><br>
-                                <?= $siteConfig['business_hours']['saturday'] ?>
+                                <?= $seoConfig['address']['street'] ?><br>
+                                <?= $seoConfig['address']['city'] ?> - <?= $seoConfig['address']['state'] ?><br>
+									CEP: <?= $seoConfig['address']['zip'] ?>
+								</p>
+							</div>
+						</div>
+						
+						<div class="flex items-start space-x-5 group">
+							<div class="flex-shrink-0">
+								<div class="w-12 h-12 bg-warning-light rounded-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:bg-warning">
+									<span class="iconify w-6 h-6 text-warning group-hover:text-white" data-icon="mdi:clock"></span>
+								</div>
+							</div>
+							<div class="flex-1">
+								<h4 class="text-lg font-semibold text-gray-900 mb-1">Horário de Funcionamento</h4>
+								<p class="text-gray-600 leading-relaxed">
+									<?= $seoConfig['business_hours']['weekdays'] ?><br>
+                                <?= $seoConfig['business_hours']['saturday'] ?>
                             </p>
                         </div>
                     </div>

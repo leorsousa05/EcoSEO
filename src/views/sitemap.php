@@ -4,13 +4,8 @@ use App\Core\ApiClient;
 $api = new ApiClient();
 $pages = $api->getAllPages();
 
-$siteConfig = require __DIR__ . '/../config/site.php';
-
-$this->layout('layouts/base', [
-    'title' => 'Mapa do Site - ' . $siteConfig['name'],
-    'description' => 'Lista completa de todas as páginas disponíveis em nosso site',
-    'keywords' => 'sitemap, mapa do site, páginas, navegação',
-]);
+$pagesConfig = require __DIR__ . '/../config/pages.php';
+$this->layout('layouts/base', $pagesConfig['sitemap']);
 ?>
 
 <?php $this->start('main_content') ?>
