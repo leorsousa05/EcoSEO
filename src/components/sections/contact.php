@@ -46,9 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="space-y-8">
                     <div class="flex items-start space-x-5 group">
                         <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-success-light rounded-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:bg-success">
-                                <span class="iconify w-6 h-6 text-success group-hover:text-white" data-icon="mdi:whatsapp"></span>
-                            </div>
+                                                    <div class="w-12 h-12 bg-success-light rounded-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:bg-success">
+                            <span class="iconify w-6 h-6 text-success group-hover:text-white" data-icon="mdi:whatsapp"></span>
+                        </div>
                         </div>
                         <div class="flex-1">
                             <h4 class="text-lg font-semibold text-gray-900 mb-1">WhatsApp</h4>
@@ -62,9 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     
                     <div class="flex items-start space-x-5 group">
                         <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-info-light rounded-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:bg-info">
-                                <span class="iconify w-6 h-6 text-info group-hover:text-white" data-icon="mdi:email"></span>
-                            </div>
+                                                    <div class="w-12 h-12 bg-info-light rounded-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:bg-info">
+                            <span class="iconify w-6 h-6 text-info group-hover:text-white" data-icon="mdi:email"></span>
+                        </div>
                         </div>
                         <div class="flex-1">
                             <h4 class="text-lg font-semibold text-gray-900 mb-1">Email</h4>
