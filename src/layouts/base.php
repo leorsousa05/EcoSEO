@@ -25,6 +25,8 @@ $seoConfig = require __DIR__ . '/../config/seo.php';
     <meta name="twitter:title" content="<?= $this->e($ogTitle ?? ($title ?? $seoConfig['seo']['title'])) ?>" />
     <meta name="twitter:description" content="<?= $this->e($ogDescription ?? ($description ?? $seoConfig['seo']['description'])) ?>" />
     <meta name="twitter:image" content="<?= $this->e($ogImage ?? $seoConfig['seo']['og_image']) ?>" />
+    <link rel="icon" type="image/png" href="https://placehold.co/32x32/png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://placehold.co/16x16/png" sizes="16x16">
 
     <link rel="canonical" href="<?= $this->e($canonicalUrl ?? $seoConfig['seo']['domain'] . $_SERVER['REQUEST_URI']) ?>" />
 
