@@ -108,10 +108,10 @@ $seoConfig = require __DIR__ . '/../config/seo.php';
         <script type="module" src="http://localhost:5173/assets/js/main.js"></script>
     <?php else: ?>
         <?php foreach (glob($assetsDir . '/main-*.css') as $css): ?>
-            <link rel="stylesheet" href="/assets/<?= basename($css) ?>" />
+            <link rel="stylesheet" href="/public/assets/<?= basename($css) ?>" />
         <?php endforeach; ?>
         <?php foreach (glob($assetsDir . '/main-*.js') as $js): ?>
-            <script type="module" src="/assets/<?= basename($js) ?>"></script>
+            <script type="module" src="/public/assets/<?= basename($js) ?>"></script>
         <?php endforeach; ?>
     <?php endif; ?>
 </head>
