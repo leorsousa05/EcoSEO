@@ -3,4 +3,4 @@ description:
 globs: 
 alwaysApply: true
 ---
-Não coloque comentários no código.
+Do not include comments in the code.

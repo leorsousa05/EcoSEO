@@ -1,0 +1,6 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+Project convention: use CSS-defined utility classes from @/src/assets/css/style.css (e.g. text-success, bg-success-light) for semantic colors instead of raw Tailwind classes like text-green-600. 
