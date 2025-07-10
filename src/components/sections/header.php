@@ -58,7 +58,7 @@ foreach ($attributes as $key => $value) {
                 <a href="/" class="flex items-center space-x-2 group">
                     <span class="iconify w-8 h-8 text-primary transition-transform duration-300 group-hover:scale-110" data-icon="heroicons:chart-bar"></span>
                     <span class="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                        <?= $siteConfig['site_name'] ?? "EcoSEO" ?>
+                        <?= $siteConfig['name'] ?? "EcoSEO" ?>
                     </span>
                 </a>
             </div>

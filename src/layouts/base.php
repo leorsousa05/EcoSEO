@@ -12,14 +12,12 @@ $seoConfig = require __DIR__ . '/../config/seo.php';
     <meta name="description" content="<?= $this->e($description ?? $seoConfig['seo']['description']) ?>" />
     <meta name="keywords" content="<?= $this->e($keywords ?? $seoConfig['seo']['keywords']) ?>" />
     
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<?= $this->e($ogUrl ?? $seoConfig['seo']['domain'] . $_SERVER['REQUEST_URI']) ?>" />
     <meta property="og:title" content="<?= $this->e($ogTitle ?? ($title ?? $seoConfig['seo']['title'])) ?>" />
     <meta property="og:description" content="<?= $this->e($ogDescription ?? ($description ?? $seoConfig['seo']['description'])) ?>" />
     <meta property="og:image" content="<?= $this->e($ogImage ?? $seoConfig['seo']['og_image']) ?>" />
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="<?= $this->e($ogUrl ?? $seoConfig['seo']['domain'] . $_SERVER['REQUEST_URI']) ?>" />
     <meta name="twitter:title" content="<?= $this->e($ogTitle ?? ($title ?? $seoConfig['seo']['title'])) ?>" />

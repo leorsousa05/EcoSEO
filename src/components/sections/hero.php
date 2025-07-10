@@ -39,14 +39,6 @@ foreach ($attributes as $key => $value) {
 }
 ?>
 
-<?= $this->insert('components/common/alert', [
-    'type' => 'info',
-    'message' => 'Este é um alerta de informação',
-    'attributes' => [
-        'class' => 'mb-4',
-    ],
-]) ?>
-
 <section id="hero" class="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"<?= $attrs ?>>
     <div class="absolute inset-0 pointer-events-none">
         <div class="absolute top-0 left-1/4 w-48 h-48 bg-primary opacity-10 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>

@@ -42,13 +42,13 @@ foreach ($attributes as $key => $value) {
                 </div>
                 <p class="text-gray-400 leading-relaxed"><?= $siteConfig['description'] ?></p>
                 <div class="flex space-x-4">
-                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-110">
+                    <a href="#" class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-110">
                         <span class="iconify w-5 h-5" data-icon="mdi:facebook"></span>
                     </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-110">
+                    <a href="#" class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-110">
                         <span class="iconify w-5 h-5" data-icon="mdi:instagram"></span>
                     </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-110">
+                    <a href="#" class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-110">
                         <span class="iconify w-5 h-5" data-icon="mdi:linkedin"></span>
                     </a>
                 </div>

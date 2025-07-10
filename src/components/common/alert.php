@@ -1,7 +1,19 @@
 <?php
 $type = $type ?? 'info';
-$message = $message ?? 'This is an alert message.';
+$message = $message ?? 'Alert message';
+$dismissible = $dismissible ?? false;
 $attributes = $attributes ?? [];
+
+$baseClasses = 'p-4 rounded-lg border';
+
+$types = [
+    'success' => 'bg-success-light border-success text-success',
+    'error' => 'bg-error-light border-error text-error',
+    'warning' => 'bg-warning-light border-warning text-warning',
+    'info' => 'bg-info-light border-info text-info',
+];
+
+$classes = $baseClasses . ' ' . ($types[$type] ?? $types['info']);
 
 $attrString = '';
 if (is_array($attributes)) {
@@ -9,43 +21,24 @@ if (is_array($attributes)) {
         $attrString .= ' ' . $key . '="' . htmlspecialchars($value) . '"';
     }
 }
-
-$alertClasses = [
-    'success' => 'bg-green-100 border-green-500 text-green-800',
-    'error' => 'bg-red-100 border-red-500 text-red-800',
-    'warning' => 'bg-yellow-100 border-yellow-500 text-yellow-800',
-    'info' => 'bg-blue-100 border-blue-500 text-blue-800',
-];
-
-$classes = 'fixed bottom-4 right-4 z-50 p-4 rounded-lg border-l-4 shadow-lg opacity-0 transition-opacity duration-300 ease-in ' . ($alertClasses[$type] ?? $alertClasses['info']) . ' text-[var(--color-secondary)]';
 ?>
 
-<div id="alert-<?php echo uniqid(); ?>" class="<?= $classes ?>"<?= $attrString ?> style="display: none;">
-    <div class="flex justify-between items-start">
-        <span><?= htmlspecialchars($message) ?></span>
-        <button onclick="this.parentElement.parentElement.style.display = 'none';" class="ml-4 text-[var(--color-secondary)] hover:text-black">
-            &times;  <!-- Close icon -->
-        </button>
+<div class="<?= $classes ?>"<?= $attrString ?>>
+    <div class="flex items-start">
+        <div class="flex-shrink-0">
+            <span class="iconify w-5 h-5" data-icon="heroicons:information-circle"></span>
+        </div>
+        <div class="ml-3 flex-1">
+            <p class="text-sm"><?= htmlspecialchars($message) ?></p>
+        </div>
+        <?php if ($dismissible): ?>
+            <div class="ml-auto pl-3">
+                <button type="button" 
+                        class="inline-flex text-gray-400 hover:text-gray-600 focus:outline-none focus:text-gray-600 transition-colors duration-200"
+                        onclick="this.parentElement.parentElement.parentElement.remove()">
+                    <span class="iconify w-5 h-5" data-icon="heroicons:x-mark"></span>
+                </button>
+            </div>
+        <?php endif; ?>
     </div>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const alertId = 'alert-<?php echo uniqid(); ?>';
-        const alertElement = document.getElementById(alertId);
-        if (alertElement) {
-            alertElement.style.display = 'block';  
-            setTimeout(() => {
-                alertElement.classList.remove('opacity-0');
-                alertElement.classList.add('opacity-100');
-            }, 100);  
-            setTimeout(() => {
-                alertElement.classList.remove('opacity-100');
-                alertElement.classList.add('opacity-0');
-                setTimeout(() => {
-                    alertElement.style.display = 'none';
-                }, 300);  
-            }, 5000);
-        }
-    });
-</script> 
+</div> 

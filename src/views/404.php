@@ -74,7 +74,6 @@ $this->layout('layouts/base', $pagesConfig['404']);
                         </div>
                     </div>
 
-                    <!-- Páginas Populares -->
                     <div class="bg-white/5 rounded-xl p-6 mb-8">
                         <div class="text-center mb-6">
                             <div class="flex items-center justify-center gap-3 mb-4">

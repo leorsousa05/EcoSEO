@@ -5,34 +5,36 @@ $size = $size ?? 'md';
 $icon = $icon ?? null;
 $attributes = $attributes ?? [];
 
+$baseClasses = 'inline-flex items-center font-medium rounded-full';
+
+$sizes = [
+    'sm' => 'px-2 py-1 text-xs',
+    'md' => 'px-3 py-1 text-sm',
+    'lg' => 'px-4 py-2 text-base',
+];
+
+$colors = [
+    'primary' => 'bg-primary text-white',
+    'secondary' => 'bg-secondary text-white',
+    'success' => 'bg-success text-white',
+    'error' => 'bg-error text-white',
+    'warning' => 'bg-warning text-white',
+    'info' => 'bg-info text-white',
+];
+
+$classes = $baseClasses . ' ' . ($sizes[$size] ?? $sizes['md']) . ' ' . ($colors[$color] ?? $colors['primary']);
+
 $attrString = '';
 if (is_array($attributes)) {
     foreach ($attributes as $key => $value) {
         $attrString .= ' ' . $key . '="' . htmlspecialchars($value) . '"';
     }
 }
-
-$sizeClasses = [
-    'sm' => 'text-xs px-2 py-1',
-    'md' => 'text-sm px-3 py-1.5',
-    'lg' => 'text-base px-4 py-2',
-];
-
-$colorClasses = [
-    'primary' => 'bg-[var(--color-primary)] text-white',
-    'secondary' => 'bg-[var(--color-secondary)] text-white',
-    'success' => 'bg-green-500 text-white',
-    'error' => 'bg-red-500 text-white',
-    'warning' => 'bg-yellow-500 text-white',
-    'info' => 'bg-blue-500 text-white',
-];
-
-$classes = 'rounded-full w-fit font-medium flex items-center flex-row justify-center ' . ($sizeClasses[$size] ?? $sizeClasses['md']) . ' ' . ($colorClasses[$color] ?? $colorClasses['primary']);
 ?>
 
-<span class="<?= $classes ?><?= $attrString ?>">
-    <?php if (! empty($icon)): ?>
-        <span class="iconify mr-1 w-4 h-4" data-icon="<?= htmlspecialchars($icon) ?>"></span>
+<span class="<?= $classes ?>"<?= $attrString ?>>
+    <?php if ($icon): ?>
+        <span class="iconify w-4 h-4 mr-1" data-icon="<?= $icon ?>"></span>
     <?php endif; ?>
     <?= htmlspecialchars($text) ?>
 </span> 
