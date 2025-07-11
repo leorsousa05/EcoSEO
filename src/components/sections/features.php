@@ -93,9 +93,20 @@ foreach ($attributes as $key => $value) {
                             </div>
                         </div>
                         
-                        <p class="text-gray-600 leading-relaxed">
+                        <p class="text-gray-600 leading-relaxed mb-6">
                             <?= $feature['description'] ?>
                         </p>
+                        
+                        <?php if (!empty($feature['button'])): ?>
+                            <?= $this->insert('components/common/button', [
+                                'text' => $feature['button']['text'],
+                                'icon' => $feature['button']['icon'] ?? 'heroicons:arrow-right',
+                                'href' => $feature['button']['href'],
+                                'style' => $feature['button']['style'] ?? 'outline',
+                                'size' => $feature['button']['size'] ?? 'sm',
+                                'customClass' => 'w-full justify-center group',
+                            ]) ?>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -114,9 +125,20 @@ foreach ($attributes as $key => $value) {
                                         <?= $feature['stats'] ?>
                                     </span>
                                 </div>
-                                <p class="text-gray-600 leading-relaxed text-lg">
+                                <p class="text-gray-600 leading-relaxed text-lg mb-4">
                                     <?= $feature['description'] ?>
                                 </p>
+                                
+                                <?php if (!empty($feature['button'])): ?>
+                                    <?= $this->insert('components/common/button', [
+                                        'text' => $feature['button']['text'],
+                                        'icon' => $feature['button']['icon'] ?? 'heroicons:arrow-right',
+                                        'href' => $feature['button']['href'],
+                                        'style' => $feature['button']['style'] ?? 'outline',
+                                        'size' => $feature['button']['size'] ?? 'sm',
+                                        'customClass' => 'group',
+                                    ]) ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

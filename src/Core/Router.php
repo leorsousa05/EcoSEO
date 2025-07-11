@@ -96,6 +96,20 @@ class Router
             ],
         ];
 
+        $serviceRoutes = [];
+        $servicesConfig = require dirname(__DIR__) . '/config/services.php';
+        $services = $servicesConfig['services'] ?? [];
+        
+        foreach ($services as $service) {
+            if (isset($service['id'])) {
+                $serviceRoutes[$service['id']] = [
+                    'url' => $baseUrl . '/' . $service['id'],
+                    'lastmod' => date('c'),
+                    'changefreq' => 'monthly',
+                    'priority' => '0.9',
+                ];
+            }
+        }
 
         $dynamicRoutes = [];
         $pages = $this->apiClient->getAllPages();
@@ -104,18 +118,21 @@ class Router
             foreach ($pages as $page) {
                 if (isset($page->url) || isset($page->slug)) {
                     $slug = $page->url ?? $page->slug;
-                    $dynamicRoutes[$slug] = [
-                        'url' => $baseUrl . '/' . ltrim($slug, '/'),
-                        'lastmod' => isset($page->updated_at) ? date('c', strtotime($page->updated_at)) : date('c'),
-                        'changefreq' => 'weekly',
-                        'priority' => '0.9',
-                    ];
+                    
+                    if (!$this->isServiceSlug($slug)) {
+                        $dynamicRoutes[$slug] = [
+                            'url' => $baseUrl . '/' . ltrim($slug, '/'),
+                            'lastmod' => isset($page->updated_at) ? date('c', strtotime($page->updated_at)) : date('c'),
+                            'changefreq' => 'weekly',
+                            'priority' => '0.8',
+                        ];
+                    }
                 }
             }
         }
 
 
-        $allRoutes = array_merge($staticRoutes, $dynamicRoutes);
+        $allRoutes = array_merge($staticRoutes, $serviceRoutes, $dynamicRoutes);
 
 
         $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
@@ -148,6 +165,20 @@ class Router
         return $content;
     }
 
+    private function isServiceSlug(string $slug): bool
+    {
+        $servicesConfig = require dirname(__DIR__) . '/config/services.php';
+        $services = $servicesConfig['services'] ?? [];
+        
+        foreach ($services as $service) {
+            if (isset($service['id']) && $service['id'] === $slug) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
     public function dispatch(): void
     {
         $httpMethod = $_SERVER['REQUEST_METHOD'];
@@ -170,8 +201,15 @@ class Router
                 $view = $routeInfo[1];
                 $vars = $routeInfo[2];
 
-
-                if ($view === 'sitemap') {
+                if ($view === 'views/dynamic') {
+                    $slug = $vars['slug'] ?? '';
+                    
+                    if ($this->isServiceSlug($slug)) {
+                        echo $this->renderView('views/service-detail', ['serviceId' => $slug]);
+                    } else {
+                        echo $this->renderView($view, $vars);
+                    }
+                } elseif ($view === 'sitemap') {
                     header('Content-Type: application/xml; charset=utf-8');
                     echo $this->generateSitemap();
                 } elseif ($view === 'robots') {

@@ -28,6 +28,7 @@ alwaysApply: true
 - Use helpers, services, or configuration files for complex logic
 - Views should only handle presentation and data binding
 - Move calculations, API calls, and data processing to appropriate service classes
+- Always if asked to create a page, separate it into sections inside @components/sections
 
 ## Git & Version Control
 

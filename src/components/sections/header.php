@@ -1,5 +1,23 @@
 <?php
 $siteConfig = require __DIR__ . '/../../config/site.php';
+$servicesConfig = require __DIR__ . '/../../config/services.php';
+
+$currentUri = $_SERVER['REQUEST_URI'];
+$serviceSubmenu = [];
+$isServicePage = false;
+
+foreach ($servicesConfig['services'] as $service) {
+    $serviceUrl = '/' . $service['id'];
+    if ($currentUri === $serviceUrl) {
+        $isServicePage = true;
+    }
+    $serviceSubmenu[] = [
+        'text' => $service['name'],
+        'href' => $serviceUrl,
+        'active' => $currentUri === $serviceUrl,
+    ];
+}
+
 $logo = $logo ?? [
     'text' => 'Logo',
     'href' => '/',
@@ -8,32 +26,23 @@ $menuItems = $menuItems ?? [
     [
         'text' => 'Início',
         'href' => '/',
-        'active' => $_SERVER['REQUEST_URI'] === '/',
+        'active' => $currentUri === '/',
     ],
     [
         'text' => 'Sobre',
         'href' => '/sobre',
-        'active' => $_SERVER['REQUEST_URI'] === '/sobre',
+        'active' => $currentUri === '/sobre',
     ],
     [
         'text' => 'Serviços',
         'href' => '/servicos',
-        'active' => $_SERVER['REQUEST_URI'] === '/servicos',
-        'submenu' => [
-            [
-                'text' => 'SEO Técnico',
-                'href' => '/servicos/seo-tecnico',
-            ],
-            [
-                'text' => 'Consultoria',
-                'href' => '/servicos/consultoria',
-            ],
-        ],
+        'active' => $currentUri === '/servicos' || $isServicePage,
+        'submenu' => $serviceSubmenu,
     ],
     [
         'text' => 'Blog',
         'href' => '/blog',
-        'active' => $_SERVER['REQUEST_URI'] === '/blog',
+        'active' => $currentUri === '/blog',
     ],
 ];
 $ctaButton = $ctaButton ?? [
@@ -83,7 +92,10 @@ foreach ($attributes as $key => $value) {
                             <div class="submenu-dropdown absolute opacity-0 invisible transition-all duration-200 top-full left-0 min-w-[200px] bg-white shadow-lg rounded-md mt-2 py-2 z-50 border border-gray-100">
                                 <?php foreach ($item['submenu'] as $subitem): ?>
                                     <a href="<?= htmlspecialchars($subitem['href']) ?>" 
-                                       class="block px-4 py-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 flex items-center transition-colors duration-150">
+                                       class="block px-4 py-2 transition-colors duration-150 flex items-center <?= ($subitem['active'] ?? false) ? 'bg-primary-light text-primary font-medium' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' ?>">
+                                        <?php if ($subitem['active'] ?? false): ?>
+                                            <span class="iconify w-4 h-4 mr-2" data-icon="heroicons:check-circle"></span>
+                                        <?php endif; ?>
                                         <?= htmlspecialchars($subitem['text']) ?>
                                     </a>
                                 <?php endforeach; ?>
@@ -138,7 +150,10 @@ foreach ($attributes as $key => $value) {
                                  class="pl-4 space-y-2 mt-2">
                                 <?php foreach ($item['submenu'] as $subitem): ?>
                                     <a href="<?= htmlspecialchars($subitem['href']) ?>" 
-                                       class="block text-gray-500 hover:text-gray-800 transition-colors duration-200">
+                                       class="block transition-colors duration-200 flex items-center <?= ($subitem['active'] ?? false) ? 'text-primary font-medium' : 'text-gray-500 hover:text-gray-800' ?>">
+                                        <?php if ($subitem['active'] ?? false): ?>
+                                            <span class="iconify w-4 h-4 mr-2" data-icon="heroicons:check-circle"></span>
+                                        <?php endif; ?>
                                         <?= htmlspecialchars($subitem['text']) ?>
                                     </a>
                                 <?php endforeach; ?>
