@@ -4,18 +4,20 @@ import Glide from '@glidejs/glide';
 
 document.addEventListener('DOMContentLoaded', function() {
     if (document.querySelector('.glide')) {
-        new Glide('.glide', {
+        new Glide('.testimonials-carousel', {
             type: 'carousel',
             perView: 3,
             gap: 32,
             autoplay: 5000,
-            hoverpause: true,
             breakpoints: {
+                768: {
+                    perView: 1
+                },
                 1024: {
                     perView: 2
                 },
-                640: {
-                    perView: 1
+                1280: {
+                    perView: 3
                 }
             }
         }).mount();

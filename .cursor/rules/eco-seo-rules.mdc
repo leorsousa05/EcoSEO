@@ -10,8 +10,9 @@ alwaysApply: true
 - Use CSS-defined utility classes from `@/src/assets/css/style.css` (e.g. `text-success`, `bg-success-light`) for semantic colors instead of raw Tailwind classes like `text-green-600`
 
 ### Components
-- Always use the components inside `@/src/components/common` whenever needed
-- Prefer reusable components over custom implementations
+- Always use the components inside `@/src/components/common` whenever needed.
+- Prefer reusable components over custom implementations.
+- Always read the README on components at your first requests to see what you can use.
 
 ### Configuration
 - Always use the files located in `@/src/config/` within the code

@@ -8,7 +8,6 @@ Esta biblioteca de componentes foi criada para ser usada em qualquer tipo de pro
 src/components/
 ├── common/
 │   ├── form/           # Componentes de formulário
-│   ├── layout/         # Componentes de layout
 │   ├── navigation/     # Componentes de navegação
 │   ├── media/          # Componentes de mídia
 │   ├── feedback/       # Componentes de feedback
@@ -57,29 +56,6 @@ src/components/
     ],
     'placeholder' => 'Selecione uma categoria',
     'required' => true
-]) ?>
-```
-
-## 🏗️ Componentes de Layout
-
-### Container
-```php
-<?= $this->insert('components/common/layout/container', [
-    'size' => 'lg',
-    'padding' => true,
-    'centered' => true,
-    'content' => '<p>Conteúdo aqui</p>'
-]) ?>
-```
-
-### Grid
-```php
-<?= $this->insert('components/common/layout/grid', [
-    'cols' => 3,
-    'gap' => 6,
-    'align' => 'center',
-    'justify' => 'between',
-    'content' => '<div>Item 1</div><div>Item 2</div><div>Item 3</div>'
 ]) ?>
 ```
 
