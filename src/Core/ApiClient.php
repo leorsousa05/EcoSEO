@@ -15,14 +15,17 @@ class ApiClient implements ApiClientInterface
     private string $apiToken;
     private array $defaultHeaders;
     private array $routes;
+    private bool $enabled;
 
     public function __construct(
         string $baseUrl = '',
         string $apiToken = '',
-        array $routes = []
+        array $routes = [],
+        bool $enabled = false
     ) {
         $this->baseUrl = rtrim($baseUrl, '/');
         $this->apiToken = $apiToken;
+        $this->enabled = $enabled;
         $this->defaultHeaders = [
             'Authorization: Bearer ' . $this->apiToken,
         ];
@@ -35,6 +38,10 @@ class ApiClient implements ApiClientInterface
 
     private function makeRequest(string $endpoint, string $method = 'GET', array $data = []): array|object|null
     {
+        if (!function_exists('curl_init')) {
+            throw new \Exception("cURL extension is not available");
+        }
+        
         $curl = curl_init();
         $url = $this->baseUrl . '/' . ltrim($endpoint, '/');
 
@@ -83,6 +90,10 @@ class ApiClient implements ApiClientInterface
 
     public function getAllPages(): ?array
     {
+        if (!$this->enabled) {
+            return [];
+        }
+
         try {
             $response = $this->makeRequest($this->routes['pages']);
 
@@ -96,6 +107,10 @@ class ApiClient implements ApiClientInterface
 
     public function getPageByUrl(string $url): ?object
     {
+        if (!$this->enabled) {
+            return null;
+        }
+
         try {
             $response = $this->makeRequest($this->routes['page'] . '/' . urlencode($url));
 
@@ -128,5 +143,15 @@ class ApiClient implements ApiClientInterface
     public function setRoutes(array $routes): void
     {
         $this->routes = array_merge($this->routes, $routes);
+    }
+
+    public function isEnabled(): bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(bool $enabled): void
+    {
+        $this->enabled = $enabled;
     }
 }

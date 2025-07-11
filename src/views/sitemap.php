@@ -1,7 +1,15 @@
 <?php
 use App\Core\ApiClient;
 
-$api = new ApiClient();
+$siteConfig = require __DIR__ . '/../config/site.php';
+$apiConfig = $siteConfig['api_config'] ?? [];
+
+$api = new ApiClient(
+    $apiConfig['base_url'] ?? '',
+    $apiConfig['token'] ?? '',
+    [],
+    $apiConfig['enabled'] ?? false
+);
 $pages = $api->getAllPages();
 
 $pagesConfig = require __DIR__ . '/../config/pages.php';

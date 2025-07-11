@@ -18,7 +18,16 @@ class Router
     public function __construct()
     {
         $this->templates = new Engine(dirname(__DIR__));
-        $this->apiClient = new ApiClient();
+        
+        $siteConfig = require dirname(__DIR__) . '/config/site.php';
+        $apiConfig = $siteConfig['api_config'] ?? [];
+        
+        $this->apiClient = new ApiClient(
+            $apiConfig['base_url'] ?? '',
+            $apiConfig['token'] ?? '',
+            [],
+            $apiConfig['enabled'] ?? false
+        );
 
         $this->templates->addData(['year' => date('Y')]);
 
