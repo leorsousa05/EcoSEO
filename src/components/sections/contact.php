@@ -22,9 +22,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sent = $mailer->send($toEmail, "Contato: {$subject}", $body, strip_tags($body));
 
     if ($sent) {
-        $feedback = '<div class="p-4 mb-4 text-success bg-success-light rounded-lg transform transition-all duration-300 ease-in-out">Sua mensagem foi enviada com sucesso!</div>';
+        $feedback = $this->insert('components/common/alert', [
+            'type' => 'success',
+            'message' => 'Sua mensagem foi enviada com sucesso!',
+        ]);
     } else {
-        $feedback = '<div class="p-4 mb-4 text-error bg-error-light rounded-lg transform transition-all duration-300 ease-in-out">Houve um erro ao enviar sua mensagem. Tente novamente mais tarde.</div>';
+        $feedback = $this->insert('components/common/alert', [
+            'type' => 'error',
+            'message' => 'Houve um erro ao enviar sua mensagem. Tente novamente mais tarde.',
+        ]);
     }
 }
 ?>
@@ -113,45 +119,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h3 class="text-2xl font-bold mb-8 text-gray-900">Envie sua Mensagem</h3>
                 <?= $feedback ?>
                 <form method="post" class="space-y-6">
-                    <div class="relative">
-                        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nome</label>
-                        <div class="relative">
-                            <span class="iconify absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" data-icon="mdi:account"></span>
-                            <input type="text" name="name" id="name" required 
-                                   class="pl-10 w-full rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
-                                   placeholder="Seu nome completo">
-                        </div>
-                    </div>
+                    <?= $this->insert('components/common/form/input', [
+                        'type' => 'text',
+                        'name' => 'name',
+                        'label' => 'Nome',
+                        'placeholder' => 'Seu nome completo',
+                        'required' => true,
+                        'icon' => 'mdi:account',
+                    ]) ?>
                     
-                    <div class="relative">
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                        <div class="relative">
-                            <span class="iconify absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" data-icon="mdi:email"></span>
-                            <input type="email" name="email" id="email" required 
-                                   class="pl-10 w-full rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
-                                   placeholder="seu@email.com">
-                        </div>
-                    </div>
+                    <?= $this->insert('components/common/form/input', [
+                        'type' => 'email',
+                        'name' => 'email',
+                        'label' => 'Email',
+                        'placeholder' => 'seu@email.com',
+                        'required' => true,
+                        'icon' => 'mdi:email',
+                    ]) ?>
                     
-                    <div class="relative">
-                        <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Assunto</label>
-                        <div class="relative">
-                            <span class="iconify absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" data-icon="mdi:tag"></span>
-                            <input type="text" name="subject" id="subject" required 
-                                   class="pl-10 w-full rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
-                                   placeholder="Assunto da mensagem">
-                        </div>
-                    </div>
+                    <?= $this->insert('components/common/form/input', [
+                        'type' => 'text',
+                        'name' => 'subject',
+                        'label' => 'Assunto',
+                        'placeholder' => 'Assunto da mensagem',
+                        'required' => true,
+                        'icon' => 'mdi:tag',
+                    ]) ?>
                     
-                    <div class="relative">
-                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Mensagem</label>
-                        <div class="relative">
-                            <span class="iconify absolute left-3 top-4 w-5 h-5 text-gray-400" data-icon="mdi:message"></span>
-                            <textarea name="message" id="message" rows="5" required 
-                                      class="pl-10 w-full rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
-                                      placeholder="Digite sua mensagem aqui..."></textarea>
-                        </div>
-                    </div>
+                    <?= $this->insert('components/common/form/textarea', [
+                        'name' => 'message',
+                        'label' => 'Mensagem',
+                        'placeholder' => 'Digite sua mensagem aqui...',
+                        'required' => true,
+                        'rows' => 5,
+                        'icon' => 'mdi:message',
+                    ]) ?>
                     
                     <div class="flex justify-end">
                         <?= $this->insert('components/common/button', [

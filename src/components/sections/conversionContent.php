@@ -32,23 +32,28 @@ $slug = $this->e($slug ?? '');
                 <div class="bg-white p-8 rounded-2xl shadow-lg">
                     <?php if (! empty($pageData['gallery']) || ! empty($pageData['cover'])): ?>
                         <div class="grid grid-cols-1 gap-6 mb-12">
-                            <div class="relative group overflow-hidden rounded-xl">
-                                <img src="<?= $this->e($pageData['cover']) ?>" 
-                                     alt="<?= $this->e($pageData['title']) ?>" 
-                                     class="w-full max-h-[300px] object-cover rounded-xl transform transition-transform duration-500 group-hover:scale-105"
-                                     loading="lazy">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            </div>
+                            <?php if (! empty($pageData['cover'])): ?>
+                                <?= $this->insert('components/common/media/image', [
+                                    'src' => $pageData['cover'],
+                                    'alt' => $pageData['title'],
+                                    'attributes' => [
+                                        'class' => 'w-full max-h-[300px] object-cover rounded-xl transform transition-transform duration-500 group-hover:scale-105',
+                                        'loading' => 'lazy',
+                                    ],
+                                ]) ?>
+                            <?php endif; ?>
+                            
                             <?php if (! empty($pageData['gallery'])): ?>
                             <div class="grid grid-cols-2 gap-4">
                                 <?php foreach ($pageData['gallery'] as $image): ?>
-                                    <div class="relative group overflow-hidden rounded-xl">
-                                        <img src="<?= $this->e($image) ?>" 
-                                             alt="<?= $this->e($pageData['title']) ?>" 
-                                             class="w-full h-48 object-cover rounded-xl transform transition-transform duration-500 group-hover:scale-105"
-                                             loading="lazy">
-                                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                    </div>
+                                    <?= $this->insert('components/common/media/image', [
+                                        'src' => $image,
+                                        'alt' => $pageData['title'],
+                                        'attributes' => [
+                                            'class' => 'w-full h-48 object-cover rounded-xl transform transition-transform duration-500 group-hover:scale-105',
+                                            'loading' => 'lazy',
+                                        ],
+                                    ]) ?>
                                 <?php endforeach; ?>
                             </div>
                             <?php endif; ?>
