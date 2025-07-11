@@ -17,6 +17,7 @@ alwaysApply: true
 ### Configuration
 - Always use the files located in `@/src/config/` within the code
 - Scan these files to identify variables and incorporate them when making code changes
+- Javascript put only on @assets/js/main.js
 
 ### Code Style
 - Do not include comments in the code
