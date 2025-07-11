@@ -1,0 +1,10 @@
+description: Git and version control best practices
+globs:
+alwaysApply: true
+---
+# Git & Version Control
+
+## Semantic Commits
+- Use semantic commit messages: `feat:`, `fix:`, `refactor:`, `docs:`, `style:`, `test:`, `chore:`
+- Follow the pattern: `type(scope): description`
+- Examples: `feat(contact): add form validation`, `fix(api): resolve curl error`

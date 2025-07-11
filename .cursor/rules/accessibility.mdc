@@ -1,0 +1,19 @@
+description: Accessibility guidelines for inclusive design
+globs:
+alwaysApply: true
+---
+# Accessibility
+
+## ARIA and Semantic HTML
+- Always use accessibility attributes (`aria-*`, `alt`, `role`, etc.) in interactive components
+- Ensure proper heading hierarchy (h1, h2, h3, etc.)
+- Add alt text to all images with meaningful descriptions
+- Use semantic HTML elements (nav, main, section, article, etc.)
+- Ensure keyboard navigation works for all interactive elements
+- Maintain proper color contrast ratios
+
+## Form Accessibility
+- Associate labels with form controls using `for` attribute
+- Use fieldset and legend for grouped form elements
+- Provide error messages that are screen reader accessible
+- Ensure focus indicators are visible

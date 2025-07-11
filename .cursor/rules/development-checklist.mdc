@@ -1,0 +1,16 @@
+description: Development checklist for quality assurance
+globs:
+alwaysApply: true
+---
+# Development Checklist
+
+## Quality Assurance Checklist
+- [ ] Use CSS utility classes from style.css
+- [ ] Use common components when available
+- [ ] Use configuration files for variables
+- [ ] No business logic in views
+- [ ] Semantic commit message
+- [ ] Accessibility attributes added
+- [ ] Responsive design implemented
+- [ ] No dead code left behind
+- [ ] No comments in code

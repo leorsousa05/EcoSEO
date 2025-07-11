@@ -1,0 +1,20 @@
+description: Code organization rules for maintaining clean architecture
+globs:
+alwaysApply: true
+---
+# Code Organization
+
+## No Business Logic in Views
+- Keep business logic out of views/templates
+- Use helpers, services, or configuration files for complex logic
+- Views should only handle presentation and data binding
+- Move calculations, API calls, and data processing to appropriate service classes
+- Always if asked to create a page, separate it into sections inside @components/sections
+
+## Code Quality
+
+### Avoid Dead Code
+- Remove unused or unnecessary code before committing
+- Don't leave commented-out code in production
+- Remove unused imports, variables, and functions
+- Keep the codebase clean and maintainable

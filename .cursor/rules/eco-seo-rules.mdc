@@ -1,118 +1,37 @@
-description:
+description: Main EcoSEO development rules - references organized rule files
 globs:
 alwaysApply: true
 ---
 # EcoSEO Development Rules
 
-## Project Conventions
+This is the main rules file that organizes all development guidelines for the EcoSEO project.
 
-### CSS and Styling
-- Use CSS-defined utility classes from `@/src/assets/css/style.css` (e.g. `text-success`, `bg-success-light`) for semantic colors instead of raw Tailwind classes like `text-green-600`
+## Organization
 
-### Components
-- Always use the components inside `@/src/components/common` whenever needed.
-- Prefer reusable components over custom implementations.
-- Always read the README on components at your first requests to see what you can use.
+The rules are organized into separate files for better maintainability:
 
-### Configuration
-- Always use the files located in `@/src/config/` within the code
-- Scan these files to identify variables and incorporate them when making code changes
-- Javascript put only on @assets/js/main.js
+- **project-conventions.mdc** - CSS, components, configuration and code style
+- **code-organization.mdc** - Business logic separation and code quality
+- **git-version-control.mdc** - Git workflows and semantic commits
+- **accessibility.mdc** - Accessibility guidelines and inclusive design
+- **responsive-design.mdc** - Mobile-first approach and responsive components
+- **development-checklist.mdc** - Quality assurance checklist
 
-### Code Style
-- Do not include comments in the code
+## Quick Reference
 
-## Code Organization
+### Core Principles
+1. Use semantic CSS utility classes from `style.css`
+2. Prefer reusable components from `@/src/components/common`
+3. Keep business logic out of views
+4. Follow mobile-first responsive design
+5. Ensure accessibility in all components
+6. Use semantic commit messages
 
-### No Business Logic in Views
-- Keep business logic out of views/templates
-- Use helpers, services, or configuration files for complex logic
-- Views should only handle presentation and data binding
-- Move calculations, API calls, and data processing to appropriate service classes
-- Always if asked to create a page, separate it into sections inside @components/sections
+### File Structure
+- Views: `@/src/views/` - Only presentation logic
+- Components: `@/src/components/` - Reusable UI components
+- Sections: `@/src/components/sections/` - Page sections
+- Config: `@/src/config/` - Configuration files
+- Assets: `@/src/assets/` - CSS and JavaScript
 
-## Git & Version Control
-
-### Semantic Commits
-- Use semantic commit messages: `feat:`, `fix:`, `refactor:`, `docs:`, `style:`, `test:`, `chore:`
-- Follow the pattern: `type(scope): description`
-- Examples: `feat(contact): add form validation`, `fix(api): resolve curl error`
-
-## Accessibility
-
-### ARIA and Semantic HTML
-- Always use accessibility attributes (`aria-*`, `alt`, `role`, etc.) in interactive components
-- Ensure proper heading hierarchy (h1, h2, h3, etc.)
-- Add alt text to all images with meaningful descriptions
-- Use semantic HTML elements (nav, main, section, article, etc.)
-- Ensure keyboard navigation works for all interactive elements
-- Maintain proper color contrast ratios
-
-### Form Accessibility
-- Associate labels with form controls using `for` attribute
-- Use fieldset and legend for grouped form elements
-- Provide error messages that are screen reader accessible
-- Ensure focus indicators are visible
-
-## Responsive Design
-
-### Mobile-First Approach
-- Design for mobile devices first, then enhance for larger screens
-- Use responsive breakpoints consistently across components
-- Test all components at different screen sizes before committing
-- Ensure touch targets are at least 44px for mobile devices
-
-### Responsive Components
-- All components and sections must be responsive
-- Use utility classes and breakpoints defined in the project
-- Avoid fixed widths that could break on smaller screens
-- Test navigation and menus on mobile devices
-
-## Code Quality
-
-### Avoid Dead Code
-- Remove unused or unnecessary code before committing
-- Don't leave commented-out code in production
-- Remove unused imports, variables, and functions
-- Keep the codebase clean and maintainable
-
-## Examples
-
-### ✅ Good CSS Usage
-```html
-<button class="text-success bg-success-light hover:bg-success">
-    Success Button
-</button>
-```
-
-### ✅ Good Component Usage
-```php
-<?= $this->insert('components/common/button', [
-    'text' => 'Submit',
-    'variant' => 'primary',
-]) ?>
-```
-
-### ✅ Good Configuration Usage
-```php
-$siteConfig = require __DIR__ . '/../config/site.php';
-$email = $siteConfig['email']['primary'];
-```
-
-### ❌ Bad
-```html
-<button class="text-green-600 bg-green-100">
-    Success Button
-</button>
-```
-
-## Checklist
-- [ ] Use CSS utility classes from style.css
-- [ ] Use common components when available
-- [ ] Use configuration files for variables
-- [ ] No business logic in views
-- [ ] Semantic commit message
-- [ ] Accessibility attributes added
-- [ ] Responsive design implemented
-- [ ] No dead code left behind
-- [ ] No comments in code
+For detailed guidelines, refer to the specific rule files listed above.

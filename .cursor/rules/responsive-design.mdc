@@ -1,0 +1,17 @@
+description: Responsive design guidelines for mobile-first development
+globs:
+alwaysApply: true
+---
+# Responsive Design
+
+## Mobile-First Approach
+- Design for mobile devices first, then enhance for larger screens
+- Use responsive breakpoints consistently across components
+- Test all components at different screen sizes before committing
+- Ensure touch targets are at least 44px for mobile devices
+
+## Responsive Components
+- All components and sections must be responsive
+- Use utility classes and breakpoints defined in the project
+- Avoid fixed widths that could break on smaller screens
+- Test navigation and menus on mobile devices

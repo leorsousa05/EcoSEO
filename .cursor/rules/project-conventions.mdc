@@ -1,0 +1,51 @@
+description: Project conventions for CSS, components, configuration and code style
+globs:
+alwaysApply: true
+---
+# Project Conventions
+
+## CSS and Styling
+- Use CSS-defined utility classes from `@/src/assets/css/style.css` (e.g. `text-success`, `bg-success-light`) for semantic colors instead of raw Tailwind classes like `text-green-600`
+
+## Components
+- Always use the components inside `@/src/components/common` whenever needed.
+- Prefer reusable components over custom implementations.
+- Always read the README on components at your first requests to see what you can use.
+
+## Configuration
+- Always use the files located in `@/src/config/` within the code
+- Scan these files to identify variables and incorporate them when making code changes
+- Javascript put only on @assets/js/main.js
+
+## Code Style
+- Do not include comments in the code
+
+## Examples
+
+### ✅ Good CSS Usage
+```html
+<button class="text-success bg-success-light hover:bg-success">
+    Success Button
+</button>
+```
+
+### ✅ Good Component Usage
+```php
+<?= $this->insert('components/common/button', [
+    'text' => 'Submit',
+    'variant' => 'primary',
+]) ?>
+```
+
+### ✅ Good Configuration Usage
+```php
+$siteConfig = require __DIR__ . '/../config/site.php';
+$email = $siteConfig['email']['primary'];
+```
+
+### ❌ Bad
+```html
+<button class="text-green-600 bg-green-100">
+    Success Button
+</button>
+```
