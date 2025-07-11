@@ -35,6 +35,8 @@ class Router
         $baseUrl = rtrim(dirname($baseUrl), '/\\');
         $this->dispatcher = simpleDispatcher(function (RouteCollector $r) use ($baseUrl) {
             $r->addRoute('GET', $baseUrl . '/', 'views/home');
+            $r->addRoute('GET', $baseUrl . '/servicos', 'views/services');
+            $r->addRoute('GET', $baseUrl . '/sobre', 'views/about');
             $r->addRoute('GET', $baseUrl . '/mapa-site', 'views/sitemap');
             $r->addRoute('GET', $baseUrl . '/sitemap.xml', 'sitemap');
             $r->addRoute('GET', $baseUrl . '/robots.txt', 'robots');
@@ -61,6 +63,18 @@ class Router
                 'lastmod' => date('c'),
                 'changefreq' => 'daily',
                 'priority' => '1.0',
+            ],
+            '/funcionalidades' => [
+                'url' => $baseUrl . '/funcionalidades',
+                'lastmod' => date('c'),
+                'changefreq' => 'monthly',
+                'priority' => '0.8',
+            ],
+            '/servicos' => [
+                'url' => $baseUrl . '/servicos',
+                'lastmod' => date('c'),
+                'changefreq' => 'monthly',
+                'priority' => '0.8',
             ],
             '/sobre' => [
                 'url' => $baseUrl . '/sobre',

@@ -94,7 +94,7 @@ $textMutedClass = $background === 'dark' ? 'text-gray-300' : 'text-gray-600';
         </div>
 
         <?php if ($layout === 'grid'): ?>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-<?= count($stats) <= 3 ? '3' : (count($stats) <= 4 ? '4' : '6') ?> gap-8 max-w-<?= count($stats) <= 3 ? '4xl' : '7xl' ?> mx-auto">
                 <?php foreach ($stats as $stat): ?>
                     <div class="text-center group">
                         <div class="w-16 h-16 bg-<?= $stat['color'] ?>-light rounded-2xl flex items-center justify-center mx-auto mb-4 transform transition-all duration-300 group-hover:scale-110 group-hover:bg-<?= $stat['color'] ?>">
