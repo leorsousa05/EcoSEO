@@ -32,45 +32,14 @@ $seoConfig = require __DIR__ . '/../config/seo.php';
 
     <link rel="canonical" href="<?= $this->e($canonicalUrl ?? $seoConfig['seo']['domain'] . $_SERVER['REQUEST_URI']) ?>" />
 
+    <?php
+    use App\Core\SchemaGenerator;
+    $schemaGenerator = new SchemaGenerator();
+    $schemaType = $schemaType ?? 'localBusiness';
+    $customSchemaData = $customSchemaData ?? [];
+    ?>
     <script type="application/ld+json">
-    <?= json_encode([
-      "@context" => "https://schema.org",
-      "@type" => "LocalBusiness",
-      "name" => $siteConfig['name'],
-      "image" => $seoConfig['seo']['og_image'],
-      "@id" => $seoConfig['seo']['domain'],
-      "url" => $seoConfig['seo']['domain'],
-      "telephone" => $siteConfig['phone']['number'],
-      "description" => $seoConfig['seo']['description'],
-      "address" => [
-        "@type" => "PostalAddress",
-        "streetAddress" => $seoConfig['address']['street'],
-        "addressLocality" => $seoConfig['address']['city'],
-        "addressRegion" => $seoConfig['address']['state'],
-        "postalCode" => $seoConfig['address']['zip'],
-        "addressCountry" => "BR"
-      ],
-      "openingHoursSpecification" => [
-        [
-          "@type" => "OpeningHoursSpecification",
-          "dayOfWeek" => ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens" => "09:00",
-          "closes" => "18:00"
-        ],
-        [
-          "@type" => "OpeningHoursSpecification",
-          "dayOfWeek" => "Saturday",
-          "opens" => "09:00",
-          "closes" => "12:00"
-        ]
-      ],
-      "sameAs" => [
-        $seoConfig['social']['facebook'],
-        $seoConfig['social']['twitter'],
-        $seoConfig['social']['instagram'],
-        $seoConfig['social']['linkedin']
-      ]
-    ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) ?>
+    <?= $schemaGenerator->generateJson($schemaType, $customSchemaData) ?>
     </script>
 
     <?php if (!empty($siteConfig['gtm'])): ?>
