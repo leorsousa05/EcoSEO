@@ -1,7 +1,0 @@
----
-description:
-globs:
-alwaysApply: true
----
-Always use the files located in @/src/config/ within the code.
-If possible, scan these files to identify variables and incorporate them when making code changes.

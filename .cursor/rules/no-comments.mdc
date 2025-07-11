@@ -1,6 +1,0 @@
----
-description: 
-globs: 
-alwaysApply: true
----
-Do not include comments in the code.

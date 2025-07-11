@@ -1,7 +1,8 @@
 <?php
 $pageData = $pageData ?? [];
-$api = $api ?? new App\Core\ApiClient();
+$api = $api ?? null;
 $slug = $this->e($slug ?? '');
+$pagesConfig = require __DIR__ . '/../../config/pages.php';
 ?>
 
 <section class="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
@@ -16,13 +17,19 @@ $slug = $this->e($slug ?? '');
                             <h3 class="text-xl font-semibold text-gray-900">Navegação</h3>
                         </div>
                         <nav class="space-y-1">
-                            <?php foreach ($api->getAllPages() as $page): ?>
-                                <a href="./<?= $page->url ?>" 
-                                   class="flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 <?= $page->url === $slug ? 'bg-primary-light text-primary font-medium' : 'text-gray-600 hover:bg-gray-50' ?>">
-                                    <span class="iconify w-5 h-5 <?= $page->url === $slug ? 'text-primary' : 'text-gray-400' ?>" data-icon="mdi:chevron-right"></span>
-                                    <span><?= $page->name ?></span>
-                                </a>
-                            <?php endforeach; ?>
+                            <?php if ($api && $api->isEnabled()): ?>
+                                <?php foreach ($api->getAllPages() as $page): ?>
+                                    <a href="./<?= $page->url ?>" 
+                                       class="flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 <?= $page->url === $slug ? 'bg-primary-light text-primary font-medium' : 'text-gray-600 hover:bg-gray-50' ?>">
+                                        <span class="iconify w-5 h-5 <?= $page->url === $slug ? 'text-primary' : 'text-gray-400' ?>" data-icon="mdi:chevron-right"></span>
+                                        <span><?= $page->name ?></span>
+                                    </a>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <div class="text-gray-500 text-sm p-4">
+                                    Navegação dinâmica não disponível
+                                </div>
+                            <?php endif; ?>
                         </nav>
                     </div>
                 </div>
@@ -30,7 +37,7 @@ $slug = $this->e($slug ?? '');
 
             <div class="lg:col-span-3">
                 <div class="bg-white p-8 rounded-2xl shadow-lg">
-                    <?php if (! empty($pageData['gallery']) || ! empty($pageData['cover'])): ?>
+                    <?php if ($pagesConfig['dynamic_pages']['gallery_enabled'] && (!empty($pageData['gallery']) || !empty($pageData['cover']))): ?>
                         <div class="grid grid-cols-1 gap-6 mb-12">
                             <?php if (! empty($pageData['cover'])): ?>
                                 <?= $this->insert('components/common/media/image', [
