@@ -1,52 +1,6 @@
 <?php
-$title = $title ?? 'Funcionalidades Principais';
-$subtitle = $subtitle ?? 'Descubra o que torna nossa solução única';
-$description = $description ?? 'Nossa plataforma oferece recursos avançados projetados para maximizar sua eficiência e resultados.';
-$features = $features ?? [
-    [
-        'icon' => 'heroicons:rocket-launch',
-        'title' => 'Performance Otimizada',
-        'description' => 'Sistema desenvolvido com foco em velocidade e eficiência máxima.',
-        'color' => 'primary',
-        'stats' => '99.9% uptime',
-    ],
-    [
-        'icon' => 'heroicons:shield-check',
-        'title' => 'Segurança Avançada',
-        'description' => 'Proteção de dados com criptografia de ponta a ponta.',
-        'color' => 'success',
-        'stats' => 'SSL 256-bit',
-    ],
-    [
-        'icon' => 'heroicons:device-phone-mobile',
-        'title' => 'Design Responsivo',
-        'description' => 'Interface adaptativa que funciona em qualquer dispositivo.',
-        'color' => 'info',
-        'stats' => '100% mobile',
-    ],
-    [
-        'icon' => 'heroicons:sparkles',
-        'title' => 'Inovação Constante',
-        'description' => 'Atualizações regulares com as últimas tecnologias.',
-        'color' => 'warning',
-        'stats' => 'Mensal',
-    ],
-    [
-        'icon' => 'heroicons:lifebuoy',
-        'title' => 'Suporte 24/7',
-        'description' => 'Equipe especializada disponível a qualquer momento.',
-        'color' => 'error',
-        'stats' => '24/7',
-    ],
-    [
-        'icon' => 'heroicons:chart-bar',
-        'title' => 'Analytics Avançado',
-        'description' => 'Relatórios detalhados para otimizar seus resultados.',
-        'color' => 'secondary',
-        'stats' => 'Real-time',
-    ],
-];
 $layout = $layout ?? 'grid';
+$background = $background ?? 'light';
 $attributes = $attributes ?? [];
 $customClass = $customClass ?? '';
 

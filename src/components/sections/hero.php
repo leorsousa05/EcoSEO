@@ -1,35 +1,4 @@
 <?php
-$title = $title ?? 'EcoSEO: Template SEO Otimizado';
-$subtitle = $subtitle ?? 'Desenvolvido para Performance e Acessibilidade';
-$description = $description ?? 'Um template moderno e otimizado para SEO, criado para desenvolvedores e empresas que buscam excelência em performance e acessibilidade.';
-$features = $features ?? [
-    [
-        'icon' => 'heroicons:bolt',
-        'text' => 'Performance otimizada com Core Web Vitals',
-    ],
-    [
-        'icon' => 'heroicons:device-phone-mobile',
-        'text' => 'Design responsivo para todos os dispositivos',
-    ],
-    [
-        'icon' => 'heroicons:shield-check',
-        'text' => 'WCAG 2.1 AA compliant',
-    ],
-];
-$buttons = $buttons ?? [
-    [
-        'text' => 'Começar Agora',
-        'icon' => 'heroicons:arrow-right',
-        'href' => '#features',
-        'style' => 'solid',
-    ],
-    [
-        'text' => 'Ver Documentação',
-        'icon' => 'heroicons:book-open',
-        'href' => '#docs',
-        'style' => 'outline',
-    ],
-];
 $attributes = $attributes ?? [];
 $customClass = $customClass ?? '';
 

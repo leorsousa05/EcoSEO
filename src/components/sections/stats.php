@@ -1,53 +1,6 @@
 <?php
-$title = $title ?? 'Números que impressionam';
-$subtitle = $subtitle ?? 'Resultados reais de nossos clientes';
-$description = $description ?? 'Veja como nossa solução está transformando negócios em todo o Brasil.';
-$stats = $stats ?? [
-    [
-        'number' => '10.000+',
-        'label' => 'Clientes Ativos',
-        'icon' => 'heroicons:users',
-        'color' => 'primary',
-        'description' => 'Empresas que confiam em nossa solução',
-    ],
-    [
-        'number' => '99.9%',
-        'label' => 'Uptime',
-        'icon' => 'heroicons:server',
-        'color' => 'success',
-        'description' => 'Disponibilidade garantida',
-    ],
-    [
-        'number' => '500%',
-        'label' => 'Aumento Médio',
-        'icon' => 'heroicons:chart-bar',
-        'color' => 'warning',
-        'description' => 'Em conversões de clientes',
-    ],
-    [
-        'number' => '24/7',
-        'label' => 'Suporte',
-        'icon' => 'heroicons:lifebuoy',
-        'color' => 'info',
-        'description' => 'Assistência técnica disponível',
-    ],
-    [
-        'number' => '50+',
-        'label' => 'Integrações',
-        'icon' => 'heroicons:puzzle-piece',
-        'color' => 'secondary',
-        'description' => 'Com ferramentas populares',
-    ],
-    [
-        'number' => '15min',
-        'label' => 'Setup',
-        'icon' => 'heroicons:rocket-launch',
-        'color' => 'error',
-        'description' => 'Tempo médio de configuração',
-    ],
-];
 $layout = $layout ?? 'grid';
-$background = $background ?? 'light';
+$background = $background ?? 'dark';
 $attributes = $attributes ?? [];
 $customClass = $customClass ?? '';
 

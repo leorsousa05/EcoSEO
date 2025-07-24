@@ -70,6 +70,9 @@ $this->layout('layouts/base', $pageData);
     ]) ?>
 
     <?= $this->insert('components/sections/detailed-services', [
+        'title' => 'Serviços Detalhados',
+        'subtitle' => 'Cada serviço com foco em resultados',
+        'description' => 'Conheça em detalhes cada um dos nossos serviços e como eles podem transformar seu negócio.',
         'services' => $servicesConfig['services'],
     ]) ?>
 
@@ -92,6 +95,9 @@ $this->layout('layouts/base', $pageData);
     ]) ?>
 
     <?= $this->insert('components/sections/faq', [
+        'title' => 'Perguntas Frequentes',
+        'subtitle' => 'Tire suas dúvidas',
+        'description' => 'Respostas para as principais dúvidas sobre nossos serviços e processos.',
         'faqs' => $servicesConfig['faq'],
     ]) ?>
 

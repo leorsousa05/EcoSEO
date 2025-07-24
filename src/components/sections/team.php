@@ -1,27 +1,4 @@
 <?php
-$title = $title ?? 'Nossa Equipe';
-$subtitle = $subtitle ?? 'Especialistas apaixonados por resultados';
-$description = $description ?? 'Nossa equipe é composta por profissionais experientes e certificados, dedicados a entregar soluções excepcionais.';
-$members = $members ?? [
-    [
-        'name' => 'João Silva',
-        'role' => 'CEO & Fundador',
-        'description' => 'Especialista em estratégia digital com mais de 10 anos de experiência. Apaixonado por inovação e resultados.',
-        'avatar' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
-    ],
-    [
-        'name' => 'Mario Costa',
-        'role' => 'Diretora de Marketing',
-        'description' => 'Especialista em marketing digital e SEO. Responsável por estratégias que geram resultados excepcionais.',
-        'avatar' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
-    ],
-    [
-        'name' => 'Carlos Santos',
-        'role' => 'CTO',
-        'description' => 'Desenvolvedor full-stack com expertise em tecnologias modernas. Focado em criar soluções escaláveis.',
-        'avatar' => 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face',
-    ],
-];
 $attributes = $attributes ?? [];
 $customClass = $customClass ?? '';
 

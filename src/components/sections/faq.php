@@ -1,7 +1,4 @@
 <?php
-$title = $title ?? 'Perguntas Frequentes';
-$subtitle = $subtitle ?? 'Tire suas dúvidas';
-$description = $description ?? 'Respostas para as principais dúvidas sobre nossos serviços e processos.';
 $faqs = $faqs ?? [];
 $attributes = $attributes ?? [];
 $customClass = $customClass ?? '';

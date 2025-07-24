@@ -1,7 +1,4 @@
 <?php
-$title = $title ?? 'Serviços Detalhados';
-$subtitle = $subtitle ?? 'Cada serviço com foco em resultados';
-$description = $description ?? 'Conheça em detalhes cada um dos nossos serviços e como eles podem transformar seu negócio.';
 $services = $services ?? [];
 $attributes = $attributes ?? [];
 $customClass = $customClass ?? '';

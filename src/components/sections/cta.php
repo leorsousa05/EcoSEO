@@ -1,22 +1,4 @@
 <?php
-$title = $title ?? 'Pronto para começar?';
-$subtitle = $subtitle ?? 'Junte-se a milhares de empresas que já confiam em nossa solução';
-$description = $description ?? 'Comece gratuitamente hoje mesmo e veja como podemos transformar seu negócio.';
-$buttons = $buttons ?? [
-    [
-        'text' => 'Começar Grátis',
-        'icon' => 'heroicons:rocket-launch',
-        'href' => '/signup',
-        'style' => 'solid',
-        'color' => 'primary',
-    ],
-    [
-        'text' => 'Falar com Vendas',
-        'icon' => 'heroicons:phone',
-        'href' => '/contato',
-        'style' => 'outline',
-    ],
-];
 $background = $background ?? 'gradient';
 $layout = $layout ?? 'centered';
 $attributes = $attributes ?? [];

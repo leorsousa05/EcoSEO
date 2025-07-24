@@ -102,6 +102,7 @@ $this->layout('layouts/base', $pageData);
     <?= $this->insert('components/sections/faq', [
         'title' => 'Perguntas frequentes sobre ' . $service['name'],
         'subtitle' => 'Tire suas dúvidas sobre este serviço',
+        'description' => 'Respostas para as principais dúvidas sobre nossos serviços e processos.',
         'faqs' => $servicesConfig['faq'],
     ]) ?>
 
