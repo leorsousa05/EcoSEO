@@ -90,7 +90,7 @@ $textMutedClass = $background === 'dark' ? 'text-gray-300' : 'text-gray-600';
                     'text' => 'Ver Relatório Completo',
                     'icon' => 'heroicons:document-chart-bar',
                     'href' => '#stats-report',
-                    'style' => 'outline',
+                    'variant' => 'outline',
                     'size' => 'lg',
                     'customClass' => 'group',
                 ]) ?>
@@ -98,7 +98,7 @@ $textMutedClass = $background === 'dark' ? 'text-gray-300' : 'text-gray-600';
                     'text' => 'Seja Parte dos Números',
                     'icon' => 'heroicons:arrow-right',
                     'href' => '/signup',
-                    'style' => 'solid',
+                    'variant' => 'primary',
                     'size' => 'lg',
                     'customClass' => 'group',
                 ]) ?>

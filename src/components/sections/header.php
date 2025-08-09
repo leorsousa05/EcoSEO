@@ -1,180 +1,202 @@
 <?php
 $siteConfig = require __DIR__ . '/../../config/site.php';
 $servicesConfig = require __DIR__ . '/../../config/services.php';
-
 $currentUri = $_SERVER['REQUEST_URI'];
-$serviceSubmenu = [];
-$isServicePage = false;
+$currentPage = '';
 
-foreach ($servicesConfig['services'] as $service) {
-    $serviceUrl = '/' . $service['id'];
-    if ($currentUri === $serviceUrl) {
-        $isServicePage = true;
-    }
-    $serviceSubmenu[] = [
-        'text' => $service['name'],
-        'href' => $serviceUrl,
-        'active' => $currentUri === $serviceUrl,
-    ];
+if ($currentUri === '/') {
+    $currentPage = 'home';
+} elseif (strpos($currentUri, '/sobre') === 0) {
+    $currentPage = 'about';
+} elseif (strpos($currentUri, '/servicos') === 0) {
+    $currentPage = 'services';
+} elseif (strpos($currentUri, '/recursos') === 0) {
+    $currentPage = 'features';
+} elseif (strpos($currentUri, '/contato') === 0) {
+    $currentPage = 'contact';
 }
 
-$logo = $logo ?? [
-    'text' => 'Logo',
+$logo = [
     'href' => '/',
+    'text' => $siteConfig['name'],
 ];
-$menuItems = $menuItems ?? [
+
+$menuItems = [
     [
         'text' => 'Início',
         'href' => '/',
-        'active' => $currentUri === '/',
+        'active' => $currentPage === 'home',
     ],
     [
         'text' => 'Sobre',
         'href' => '/sobre',
-        'active' => $currentUri === '/sobre',
+        'active' => $currentPage === 'about',
     ],
     [
         'text' => 'Serviços',
         'href' => '/servicos',
-        'active' => $currentUri === '/servicos' || $isServicePage,
-        'submenu' => $serviceSubmenu,
+        'active' => $currentPage === 'services',
+        'submenu' => array_map(function($service) use ($currentUri) {
+            return [
+                'text' => $service['name'],
+                'href' => '/' . $service['id'],
+                'active' => $currentUri === '/' . $service['id'],
+            ];
+        }, $servicesConfig['services']),
     ],
     [
-        'text' => 'Blog',
-        'href' => '/blog',
-        'active' => $currentUri === '/blog',
+        'text' => 'Recursos',
+        'href' => '/recursos',
+        'active' => $currentPage === 'features',
+    ],
+    [
+        'text' => 'Contato',
+        'href' => '/contato',
+        'active' => $currentPage === 'contact',
     ],
 ];
-$ctaButton = $ctaButton ?? [
-    'text' => 'Fale Conosco',
+
+$ctaButton = [
+    'text' => 'Começar Agora',
     'href' => '/contato',
-    'style' => 'solid',
+    'style' => 'primary',
     'size' => 'md',
 ];
-$attributes = $attributes ?? [];
-$customClass = $customClass ?? '';
-
-$attrs = '';
-foreach ($attributes as $key => $value) {
-    $attrs .= " $key=\"$value\"";
-}
 ?>
 
-<header class="h-[80px] fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200"<?= $attrs ?>>
+<header class="fixed flex justify-center top-0 left-0 right-0 z-50 h-20 p-4 bg-white border-b border-gray-200 shadow-sm">
     <div class="container mx-auto px-4">
-        <div class="flex justify-between items-center py-4">
-            <div class="flex items-center space-x-2">
-                <a href="/" class="flex items-center space-x-2 group">
-                    <span class="iconify w-8 h-8 text-primary transition-transform duration-300 group-hover:scale-110" data-icon="heroicons:chart-bar"></span>
-                    <span class="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                        <?= $siteConfig['name'] ?? "EcoSEO" ?>
-                    </span>
-                </a>
-            </div>
+        <div class="flex items-center justify-between h-full">
+            <a href="<?= htmlspecialchars($logo['href']) ?>" class="flex items-center space-x-3 group">
+                <span class="iconify w-8 h-8 text-primary group-hover:scale-110 transition-transform duration-300" 
+                    data-icon="heroicons:chart-bar" aria-hidden="true"></span>
+                <span class="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors duration-300">
+                    <?= htmlspecialchars($logo['text']) ?>
+                </span>
+            </a>
 
-            <nav class="hidden lg:flex items-center space-x-8">
+            <nav class="hidden lg:flex items-center space-x-8" role="navigation" aria-label="Menu principal">
                 <?php foreach ($menuItems as $item): ?>
-                    <div class="relative group submenu-hover">
-                        <a href="<?= htmlspecialchars($item['href']) ?>" 
-                           class="relative text-gray-600 hover:text-gray-900 transition-colors duration-200 py-2 flex items-center group">
+                    <?php if (empty($item['submenu'])): ?>
+                        <a href="<?= htmlspecialchars($item['href']) ?>"
+                            class="text-gray-700 hover:text-primary font-medium transition-colors duration-300 <?= ($item['active'] ?? false) ? 'text-primary' : '' ?>"
+                            <?= ($item['active'] ?? false) ? 'aria-current="page"' : '' ?>>
                             <?= htmlspecialchars($item['text']) ?>
-                            <?php if (! empty($item['submenu'])): ?>
-                                <span class="iconify ml-1 w-4 h-4 text-gray-500 group-hover:text-gray-900 transition-transform duration-300 transform group-hover:rotate-180" data-icon="heroicons:chevron-down"></span>
-                            <?php endif; ?>
-                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-                            <?php if ($item['active'] ?? false): ?>
-                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span>
-                            <?php endif; ?>
                         </a>
-                        
-                        <?php if (! empty($item['submenu'])): ?>
-                            <div class="absolute top-full left-0 w-full h-2 bg-transparent"></div>
-                            <div class="submenu-dropdown absolute opacity-0 invisible transition-all duration-200 top-full left-0 min-w-[200px] bg-white shadow-lg rounded-md mt-2 py-2 z-50 border border-gray-100">
-                                <?php foreach ($item['submenu'] as $subitem): ?>
-                                    <a href="<?= htmlspecialchars($subitem['href']) ?>" 
-                                       class="block px-4 py-2 transition-colors duration-150 flex items-center <?= ($subitem['active'] ?? false) ? 'bg-primary-light text-primary font-medium' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' ?>">
-                                        <?php if ($subitem['active'] ?? false): ?>
-                                            <span class="iconify w-4 h-4 mr-2" data-icon="heroicons:check-circle"></span>
-                                        <?php endif; ?>
-                                        <?= htmlspecialchars($subitem['text']) ?>
-                                    </a>
-                                <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="relative group">
+                            <button class="flex items-center space-x-1 text-gray-700 hover:text-primary font-medium transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg px-2 py-1"
+                                aria-expanded="false" aria-haspopup="true">
+                                <span><?= htmlspecialchars($item['text']) ?></span>
+                                <span class="iconify w-4 h-4 transition-transform duration-300 group-hover:rotate-180" 
+                                    data-icon="heroicons:chevron-down" aria-hidden="true"></span>
+                            </button>
+                            <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                                <div class="py-2">
+                                    <?php foreach ($item['submenu'] as $subitem): ?>
+                                        <a href="<?= htmlspecialchars($subitem['href']) ?>"
+                                            class="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-200 <?= ($subitem['active'] ?? false) ? 'text-primary bg-primary-light' : '' ?>"
+                                            <?= ($subitem['active'] ?? false) ? 'aria-current="page"' : '' ?>>
+                                            <?= htmlspecialchars($subitem['text']) ?>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
                             </div>
-                        <?php endif; ?>
-                    </div>
+                        </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </nav>
 
-            <div class="hidden lg:flex items-center space-x-4">
+            <div class="hidden lg:block">
                 <?= $this->insert('components/common/button', [
                     'text' => $ctaButton['text'],
                     'icon' => 'heroicons:arrow-right',
                     'href' => $ctaButton['href'],
                     'style' => $ctaButton['style'],
                     'size' => $ctaButton['size'],
-                    'customClass' => 'group',
+                    'customClass' => 'group shadow-md hover:shadow-lg transition-shadow duration-300',
                 ]) ?>
             </div>
 
-            <div class="lg:hidden">
-                <button class="text-gray-600 hover:text-gray-900 focus:outline-none transition-colors duration-200" 
-                        aria-label="Menu"
-                        x-data="{ open: false }"
-                        @click="open = !open">
-                    <span class="iconify w-6 h-6" data-icon="heroicons:bars-3"></span>
-                </button>
-            </div>
-        </div>
-
-        <div class="lg:hidden" x-show="open" x-transition>
-            <nav class="py-4 space-y-4">
-                <?php foreach ($menuItems as $item): ?>
-                    <div x-data="{ submenuOpen: false }">
-                        <div class="flex items-center justify-between">
-                            <a href="<?= htmlspecialchars($item['href']) ?>" 
-                               class="block text-gray-600 hover:text-gray-900 transition-colors duration-200 py-2">
-                                <?= htmlspecialchars($item['text']) ?>
-                            </a>
-                            
-                            <?php if (! empty($item['submenu'])): ?>
-                                <button @click="submenuOpen = !submenuOpen" 
-                                        class="text-gray-600 hover:text-gray-900 transition-transform duration-300"
-                                        :class="{ 'rotate-180': submenuOpen }">
-                                    <span class="iconify w-5 h-5" data-icon="heroicons:chevron-down"></span>
-                                </button>
-                            <?php endif; ?>
-                        </div>
-                        
-                        <?php if (! empty($item['submenu'])): ?>
-                            <div x-show="submenuOpen" x-transition 
-                                 class="pl-4 space-y-2 mt-2">
-                                <?php foreach ($item['submenu'] as $subitem): ?>
-                                    <a href="<?= htmlspecialchars($subitem['href']) ?>" 
-                                       class="block transition-colors duration-200 flex items-center <?= ($subitem['active'] ?? false) ? 'text-primary font-medium' : 'text-gray-500 hover:text-gray-800' ?>">
-                                        <?php if ($subitem['active'] ?? false): ?>
-                                            <span class="iconify w-4 h-4 mr-2" data-icon="heroicons:check-circle"></span>
-                                        <?php endif; ?>
-                                        <?= htmlspecialchars($subitem['text']) ?>
-                                    </a>
-                                <?php endforeach; ?>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                <?php endforeach; ?>
-                
-                <div class="pt-4">
-                    <?= $this->insert('components/common/button', [
-                        'text' => $ctaButton['text'],
-                        'icon' => 'heroicons:arrow-right',
-                        'href' => $ctaButton['href'],
-                        'style' => $ctaButton['style'],
-                        'size' => $ctaButton['size'],
-                        'customClass' => 'w-full justify-center group',
-                    ]) ?>
+            <button
+                class="lg:hidden relative w-11 h-11 flex items-center justify-center text-gray-700 hover:text-gray-900 rounded-xl hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all duration-300"
+                aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-button>
+                <span class="sr-only">Abrir menu</span>
+                <div class="relative w-6 h-6">
+                    <span class="absolute left-0 top-1 w-6 h-0.5 bg-current rounded transition-all duration-300 transform origin-center"></span>
+                    <span class="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-0.5 bg-current rounded transition-all duration-300 transform origin-center"></span>
+                    <span class="absolute left-0 bottom-1 w-6 h-0.5 bg-current rounded transition-all duration-300 transform origin-center"></span>
                 </div>
-            </nav>
+            </button>
         </div>
     </div>
+
+    <div class="lg:hidden fixed inset-0 z-40 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300" 
+        id="mobile-overlay" data-overlay></div>
+
+    <nav class="lg:hidden fixed inset-y-0 right-0 z-50 w-[88%] max-w-sm bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-out"
+        id="mobile-menu" data-mobile-menu role="navigation" aria-label="Menu mobile">
+        <div class="h-20 px-6 flex items-center justify-between border-b border-gray-200">
+            <a href="<?= htmlspecialchars($logo['href']) ?>" class="flex items-center space-x-3">
+                <span class="iconify w-7 h-7 text-primary" data-icon="heroicons:chart-bar" aria-hidden="true"></span>
+                <span class="text-xl font-semibold text-gray-900"><?= htmlspecialchars($logo['text']) ?></span>
+            </a>
+            <button
+                class="p-2 rounded-lg text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200"
+                aria-label="Fechar menu" data-close-menu>
+                <span class="iconify w-6 h-6" data-icon="heroicons:x-mark"></span>
+            </button>
+        </div>
+
+        <div class="h-[calc(100vh-5rem)] overflow-y-auto px-6 py-6">
+            <?php foreach ($menuItems as $index => $item): ?>
+                <div class="mb-4">
+                    <?php if (empty($item['submenu'])): ?>
+                        <a href="<?= htmlspecialchars($item['href']) ?>"
+                            class="block text-lg text-gray-800 hover:text-primary font-medium transition-colors duration-200 <?= ($item['active'] ?? false) ? 'text-primary' : '' ?>"
+                            <?= ($item['active'] ?? false) ? 'aria-current="page"' : '' ?>>
+                            <?= htmlspecialchars($item['text']) ?>
+                        </a>
+                    <?php else: ?>
+                        <div class="space-y-2">
+                            <button
+                                class="w-full flex items-center justify-between text-lg text-gray-800 hover:text-primary font-medium transition-colors duration-200 focus:outline-none"
+                                data-submenu-toggle="<?= $index ?>"
+                                aria-expanded="false" aria-controls="submenu-<?= $index ?>">
+                                <span><?= htmlspecialchars($item['text']) ?></span>
+                                <span class="iconify w-5 h-5 transition-transform duration-300" 
+                                    data-icon="heroicons:chevron-down"></span>
+                            </button>
+                            <div id="submenu-<?= $index ?>"
+                                class="submenu max-h-0 overflow-hidden transition-all duration-300 ease-out"
+                                data-submenu="<?= $index ?>">
+                                <div class="pl-4 space-y-2 border-l-2 border-gray-200">
+                                    <?php foreach ($item['submenu'] as $subitem): ?>
+                                        <a href="<?= htmlspecialchars($subitem['href']) ?>"
+                                            class="block text-base text-gray-600 hover:text-primary transition-colors duration-200 <?= ($subitem['active'] ?? false) ? 'text-primary font-medium' : '' ?>"
+                                            <?= ($subitem['active'] ?? false) ? 'aria-current="page"' : '' ?>>
+                                            <?= htmlspecialchars($subitem['text']) ?>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
+
+            <div class="pt-6 mt-6 border-t border-gray-200">
+                <?= $this->insert('components/common/button', [
+                    'text' => $ctaButton['text'],
+                    'icon' => 'heroicons:arrow-right',
+                    'href' => $ctaButton['href'],
+                    'style' => $ctaButton['style'],
+                    'size' => $ctaButton['size'],
+                    'customClass' => 'w-full justify-center',
+                ]) ?>
+            </div>
+        </div>
+    </nav>
 </header>
 
 <?= $this->insert('components/common/privacy-popup') ?>

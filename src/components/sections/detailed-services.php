@@ -91,8 +91,7 @@ foreach ($attributes as $key => $value) {
                         <?= $this->insert('components/common/button', [
                             'text' => 'Solicitar Orçamento',
                             'href' => '/contato?service=' . $service['id'],
-                            'style' => 'solid',
-                            'color' => $service['color'],
+                            'variant' => 'primary',
                             'size' => 'sm',
                         ]) ?>
                     </div>

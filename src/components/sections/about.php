@@ -53,7 +53,7 @@ foreach ($attributes as $key => $value) {
                 'text' => 'Explorar Funcionalidades',
                 'icon' => 'heroicons:arrow-right',
                 'href' => '#features',
-                'style' => 'outline',
+                'variant' => 'outline',
                 'size' => 'lg',
                 'customClass' => 'group',
             ]) ?>

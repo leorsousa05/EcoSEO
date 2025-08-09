@@ -36,13 +36,13 @@ $this->layout('layouts/base', $pageData);
                 'text' => 'Solicitar Orçamento',
                 'icon' => 'heroicons:phone',
                 'href' => '/contato',
-                'style' => 'solid',
+                'variant' => 'primary',
             ],
             [
                 'text' => 'Ver Portfólio',
                 'icon' => 'heroicons:eye',
                 'href' => '#portfolio',
-                'style' => 'outline',
+                'variant' => 'outline',
             ],
         ],
     ]) ?>
@@ -62,7 +62,7 @@ $this->layout('layouts/base', $pageData);
                 'button' => [
                     'text' => 'Saiba Mais',
                     'href' => '/' . $service['id'],
-                    'style' => 'outline',
+                    'variant' => 'outline',
                     'icon' => 'heroicons:arrow-right',
                 ],
             ];

@@ -2,7 +2,6 @@
 @import '@glidejs/glide/dist/css/glide.core.min.css';
 
 @theme {
-  
   --color-primary: #8b5cf6;
   --color-primary-hover: #7c3aed;
   --color-primary-focus: #6d28d9;
@@ -27,6 +26,10 @@
   --color-info-hover: #3b82f6;
   --color-info-focus: #2563eb;
   
+  --color-gray-100: #f3f4f6;
+  --color-gray-500: #6b7280;
+  --color-gray-700: #374151;
+  --color-gray-900: #111827;
   
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
@@ -37,7 +40,6 @@
   --font-size-3xl: 1.875rem;
   --font-size-4xl: 2.25rem;
   --font-size-5xl: 3rem;
-  
   
   --spacing-1: 0.25rem;
   --spacing-2: 0.5rem;
@@ -50,7 +52,6 @@
   --spacing-12: 3rem;
   --spacing-16: 4rem;
   --spacing-20: 5rem;
-  
   
   --btn-padding-x: var(--spacing-4);
   --btn-padding-y: var(--spacing-2);
@@ -71,15 +72,10 @@
   --section-padding-y: var(--spacing-12);
   --section-padding-x: var(--spacing-4);
   
-  
   --focus-ring-width: 2px;
   --focus-ring-offset: 2px;
   --focus-ring-color: var(--color-primary);
 }
-
-
-
-
 
 .content {
   max-width: 800px;
@@ -89,7 +85,6 @@
   color: #333;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
 
 .content h1 {
   font-size: 2.5rem;
@@ -138,13 +133,11 @@
   margin: 1rem 0 0.5rem 0;
 }
 
-
 .content p {
   margin: 0 0 1rem 0;
   color: #555;
   text-align: justify;
 }
-
 
 .content a {
   color: #007bff;
@@ -157,7 +150,6 @@
   color: #0056b3;
   border-bottom-color: #0056b3;
 }
-
 
 .content ul,
 .content ol {
@@ -185,7 +177,6 @@
   margin: 0.5rem 0;
 }
 
-
 .content blockquote {
   margin: 1.5rem 0;
   padding: 1rem 2rem;
@@ -205,7 +196,6 @@
   left: 0.5rem;
   font-family: Georgia, serif;
 }
-
 
 .content code {
   background: #f4f4f4;
@@ -231,7 +221,6 @@
   color: #333;
 }
 
-
 .content img {
   max-width: 100%;
   height: auto;
@@ -245,7 +234,6 @@
   transform: translateY(-2px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
-
 
 .content table {
   width: 100%;
@@ -274,7 +262,6 @@
   background: #f8f9fa;
 }
 
-
 .content strong,
 .content b {
   font-weight: 700;
@@ -292,14 +279,12 @@
   border-radius: 2px;
 }
 
-
 .content hr {
   border: none;
   height: 2px;
   background: linear-gradient(to right, transparent, #007bff, transparent);
   margin: 2rem 0;
 }
-
 
 .content input,
 .content textarea,
@@ -320,7 +305,6 @@
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
-
 .content button,
 .content .btn {
   background: #007bff;
@@ -340,132 +324,156 @@
   background: #0056b3;
 }
 
-
 @media (max-width: 768px) {
   .content {
-      padding: 15px;
+    padding: 15px;
   }
   
   .content h1 {
-      font-size: 2rem;
+    font-size: 2rem;
   }
   
   .content h2 {
-      font-size: 1.5rem;
+    font-size: 1.5rem;
   }
   
   .content h3 {
-      font-size: 1.25rem;
+    font-size: 1.25rem;
   }
   
   .content table {
-      font-size: 0.9rem;
+    font-size: 0.9rem;
   }
   
   .content th,
   .content td {
-      padding: 0.5rem;
+    padding: 0.5rem;
   }
 }
 
-
 .glide__arrow {
-    background: var(--color-primary);
-    border: none;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
-    transition: all 0.3s ease;
+  background: var(--color-primary);
+  border: none;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  transition: all 0.3s ease;
 }
 
 .glide__arrow:hover {
-    background: var(--color-primary-dark);
-    transform: scale(1.1);
+  background: var(--color-primary-hover);
+  transform: scale(1.1);
 }
 
 .glide__arrow--left {
-    left: -1.5rem;
+  left: -1.5rem;
 }
 
 .glide__arrow--right {
-    right: -1.5rem;
+  right: -1.5rem;
 }
 
 .glide__bullets {
-    bottom: -2rem;
+  bottom: -2rem;
 }
 
 .glide__bullet {
-    background: var(--color-gray-300);
-    border: none;
-    box-shadow: none;
-    width: 0.75rem;
-    height: 0.75rem;
-    transition: all 0.3s ease;
+  background: #d1d5db;
+  border: none;
+  box-shadow: none;
+  width: 0.75rem;
+  height: 0.75rem;
+  transition: all 0.3s ease;
 }
 
 .glide__bullet--active {
-    background: var(--color-primary);
-    transform: scale(1.2);
+  background: var(--color-primary);
+  transform: scale(1.2);
 }
 
 .glide__bullet:hover {
-    background: var(--color-primary);
-    transform: scale(1.1);
+  background: var(--color-primary);
+  transform: scale(1.1);
 }
 
-/* Submenu styles */
 .submenu-hover:hover .submenu-dropdown {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
 }
 
 .submenu-dropdown {
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
 }
 
-/* Grid pattern background */
 .bg-grid-pattern {
-    background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.1) 1px, transparent 0);
-    background-size: 20px 20px;
+  background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.1) 1px, transparent 0);
+  background-size: 20px 20px;
 }
 
-/* Utility classes for colors */
-.text-primary { color: var(--color-primary); }
-.text-primary-hover:hover { color: var(--color-primary-hover); }
-.bg-primary { background-color: var(--color-primary); }
-.bg-primary-light { background-color: rgba(139, 92, 246, 0.1); }
-.border-primary { border-color: var(--color-primary); }
+.mobile-menu {
+  background-color: #ffffff;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
 
-.text-secondary { color: var(--color-secondary); }
-.text-secondary-hover:hover { color: var(--color-secondary-hover); }
-.bg-secondary { background-color: var(--color-secondary); }
-.bg-secondary-light { background-color: rgba(107, 114, 128, 0.1); }
-.border-secondary { border-color: var(--color-secondary); }
+#mobile-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
 
-.text-success { color: var(--color-success); }
-.text-success-hover:hover { color: var(--color-success-hover); }
-.bg-success { background-color: var(--color-success); }
-.bg-success-light { background-color: rgba(16, 185, 129, 0.1); }
-.border-success { border-color: var(--color-success); }
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu, #mobile-overlay, .hamburger-line, .submenu {
+    transition: none !important;
+  }
+}
 
-.text-error { color: var(--color-error); }
-.text-error-hover:hover { color: var(--color-error-hover); }
-.bg-error { background-color: var(--color-error); }
-.bg-error-light { background-color: rgba(239, 68, 68, 0.1); }
-.border-error { border-color: var(--color-error); }
+.submenu { 
+  transition: max-height 0.35s cubic-bezier(.4,0,.2,1); 
+}
 
-.text-warning { color: var(--color-warning); }
-.text-warning-hover:hover { color: var(--color-warning-hover); }
-.bg-warning { background-color: var(--color-warning); }
-.bg-warning-light { background-color: rgba(245, 158, 11, 0.1); }
-.border-warning { border-color: var(--color-warning); }
+[data-menu-button] .absolute:nth-child(1) {
+  top: 4px;
+}
 
-.text-info { color: var(--color-info); }
-.text-info-hover:hover { color: var(--color-info-hover); }
-.bg-info { background-color: var(--color-info); }
-.bg-info-light { background-color: rgba(96, 165, 250, 0.1); }
-.border-info { border-color: var(--color-info); }
+[data-menu-button] .absolute:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+[data-menu-button] .absolute:nth-child(3) {
+  bottom: 4px;
+}
+
+[data-menu-button][aria-expanded="true"] .absolute:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+[data-menu-button][aria-expanded="true"] .absolute:nth-child(2) {
+  transform: translateY(-50%) scaleX(0);
+  opacity: 0;
+}
+
+[data-menu-button][aria-expanded="true"] .absolute:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+[data-submenu-toggle][aria-expanded="true"] .iconify {
+  transform: rotate(180deg);
+}
+
+.mobile-menu a:hover {
+  transform: translateX(4px);
+  transition: transform 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu,
+  #mobile-overlay,
+  [data-menu-button] .absolute,
+  .submenu {
+    transition: none !important;
+  }
+}

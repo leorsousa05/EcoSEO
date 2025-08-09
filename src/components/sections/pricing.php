@@ -85,8 +85,7 @@ foreach ($attributes as $key => $value) {
                             <?= $this->insert('components/common/button', [
                                 'text' => $plan['button_text'],
                                 'href' => $plan['button_href'],
-                                'style' => $plan['popular'] ? 'solid' : 'outline',
-                                'color' => $plan['color'],
+                                'variant' => $plan['popular'] ? 'primary' : 'outline',
                                 'size' => 'lg',
                                 'customClass' => 'w-full group',
                             ]) ?>

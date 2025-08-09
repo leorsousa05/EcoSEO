@@ -49,7 +49,7 @@ foreach ($attributes as $key => $value) {
                 'text' => 'Falar com Especialista',
                 'icon' => 'heroicons:phone',
                 'href' => '/contato',
-                'style' => 'solid',
+                'variant' => 'primary',
                 'size' => 'lg',
                 'customClass' => 'group',
             ]) ?>

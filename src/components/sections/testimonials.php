@@ -132,7 +132,7 @@ foreach ($attributes as $key => $value) {
                     'text' => 'Ver Mais Depoimentos',
                     'icon' => 'heroicons:arrow-right',
                     'href' => '#testimonials',
-                    'style' => 'outline',
+                    'variant' => 'outline',
                     'size' => 'lg',
                     'customClass' => 'group',
                 ]) ?>
@@ -140,7 +140,7 @@ foreach ($attributes as $key => $value) {
                     'text' => 'Seja Nosso Cliente',
                     'icon' => 'heroicons:heart',
                     'href' => '/contato',
-                    'style' => 'solid',
+                    'variant' => 'primary',
                     'size' => 'lg',
                     'customClass' => 'group',
                 ]) ?>
