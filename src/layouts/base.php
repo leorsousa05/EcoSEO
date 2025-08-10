@@ -76,7 +76,6 @@ $seoConfig = require __DIR__ . '/../config/seo.php';
     ?>
 
     <?php if ($isDev): ?>
-        <link rel="stylesheet" href="/assets/style.css" />
         <script type="module" src="http://localhost:5173/@vite/client"></script>
         <script type="module" src="http://localhost:5173/assets/js/main.js"></script>
     <?php else: ?>
